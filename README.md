@@ -88,33 +88,85 @@ rule propagates all the way out: the same skepticism a verifier applies to
 a worker's "done" is applied to a memory's "true," an amendment's
 "better," and an imported practice's "proven."
 
-## Why (the practical version)
+## What Genie can do
 
 Handing an agent a big task usually buys you a confident summary you then
-have to re-audit yourself. Genie inverts that:
+have to re-audit yourself. Genie inverts that. The full inventory:
 
-- **Nothing is "done" until independently verified.** Every acceptance
-  criterion is re-executed by a verifier that didn't do the work — or by
-  the orchestrator running the commands itself. The orchestrator's own
-  final report is audited against the state files before delivery.
-- **Questions travel up, not at you.** Worker → supervisor → orchestrator →
-  you. Each level resolves what it can; you get one batched set of
-  questions with recommendations, only for calls that are genuinely yours
-  (taste, scope, credentials, destructive risk).
-- **Every run is on disk.** Decisions with rationale, an event timeline, a
-  resumable state file, per-module heartbeats and result files. Kill it
-  mid-run, resume from any session — even a different agent.
-- **It learns.** Escalation answers and run outcomes distill into a memory
-  store, so repeat runs ask less. A run ledger tracks its own quality
-  metrics (including *verifier escapes* — defects that got past a passing
-  verdict). An idle-time **dream pass** consolidates memories and drafts
-  improvements. Proven practices become amendments to the skill's own
-  files — **only with your explicit approval**, logged in
-  [AMENDMENTS.md](AMENDMENTS.md).
-- **It right-sizes.** A triage gate declines tasks that don't need
-  orchestration, runs small ones in lite mode (one supervisor, scriptable
-  verification), and saves the full parallel machinery for work that earns
-  it.
+### 🎯 Execute work — built or thought
+- **Build tasks**: decompose into verifiable modules → parallel supervisor
+  agents → independent verification (self-reports never count) →
+  integration pass → a final report audited against the state files
+  before delivery.
+- **Inquiry tasks** (research, market analysis, strategy, deep thinking):
+  decompose into investigative angles → a red-team module attacks the
+  emerging conclusions → provenance-checked, cited reports with explicit
+  "what would change this conclusion" sections
+  ([references/inquiry.md](references/inquiry.md)).
+- **Right-sizing triage**: declines tasks too small for ceremony, runs
+  **lite mode** (one supervisor, scriptable verification — benchmarked at
+  native cost) or full parallel mode only when the work earns it.
+
+### 💰 Cost discipline
+- **A quote before any spend**: planned agents × ledger-calibrated
+  per-agent cost, ±30% range, shown with lite/native alternatives.
+- **Concurrence gate by default**: nothing dispatches without explicit
+  approval; an unanswered gate holds the run at zero spend. Say
+  "autopilot" once to waive it permanently (revocable any time).
+- Hard budget caps, deadlines with graceful descoping, model tiering for
+  routine work, and **salvage reports** when runs end incomplete —
+  partial delivery is a deliverable, not an apology.
+
+### 🎮 Stay in control
+- Mid-run steering: `status`, `pause`, `resume`, `cancel`,
+  `skip <module>` — or describe a scope change in plain words and it
+  re-plans.
+- Questions travel up, not at you: worker → supervisor → orchestrator →
+  you; each level resolves what it can, and you get one batched set with
+  recommendations, only for calls that are genuinely yours.
+- Every run on disk: decisions with rationale, a replayable event
+  timeline, heartbeat/result files, run locks. Kill it mid-run, resume
+  from any session — even a different agent.
+
+### 🧠 Remember and know
+- Cross-run memory with tentative→standing promotion (a lesson must hold
+  twice before it's trusted), provenance tracking, poisoning quarantine,
+  and machine/user/global scoping.
+- An **Obsidian-compatible knowledge graph**: typed `[[links]]`,
+  mechanically auto-linked structural edges, salience counters, bounded
+  one-hop graph recall. Point Obsidian at `~/.genie/memory/` and see
+  what your agent believes.
+- **Gap-aware recall**: states what it does NOT know about your task —
+  and those gaps are exactly what it asks you about.
+- **`genie know <topic>`**: ask what it believes and why — a cited
+  answer plus honest gaps, no run, no agents, no cost.
+
+### 🌙 Improve itself (gated)
+- A per-run retro scores its own mechanics; the run ledger tracks quality
+  trends including **verifier escapes** — defects that got past a passing
+  verdict, its most important self-metric.
+- **Dream mode**: idle-time memory consolidation behind a token-free
+  shell guard, fired by cron — it can only reorganize recorded evidence,
+  never invent facts, never write live.
+- **Amendments**: proven lessons become evidence-cited diffs to its own
+  instruction files — applied only with explicit approval, logged in
+  [AMENDMENTS.md](AMENDMENTS.md), with safety rules amendment-proof.
+
+### 🌐 Work as a network
+- One skill, one memory, one ledger across Claude Code, OpenClaw/Hermes,
+  and Codex CLI ([references/porting.md](references/porting.md)).
+- Exports best practices as evidence-cited bundles; **imports re-earn
+  standing locally** through the receiving agent's own ledger before
+  being trusted — replication, not gossip.
+- OpenClaw Skill Workshop integration: the amendment gate becomes
+  physically enforced (scanner, hashes, rollback) where the host
+  supports it.
+
+### Honest frontier (not yet proven)
+`genie setup` hasn't run end-to-end on a fresh host; the cross-owner
+practice exchange hasn't had two real endpoints; and full-mode's
+post-optimization cost (~2× native, projected) awaits a large-enough
+task. All three resolve through use, not more building.
 
 ## Benchmarks (from the bundled ledger format, three real runs)
 
