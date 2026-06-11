@@ -35,3 +35,15 @@ explicitly user-approved.
   (`~/.genie/`, project `.genie/` dirs) deliberately unchanged —
   they are protocol, not branding, like git's `.git/` — so all existing
   memories, ledger lines, and run state remain valid.
+
+## 2026-06-10 — inquiry mode (user-directed)
+
+- **Added references/inquiry.md + Phase 0/1 hooks**: genie now explicitly
+  handles research / analysis / strategy / thinking tasks. Modules are
+  investigative angles; criteria are provenance-shaped (citations,
+  counter-evidence, invalidation conditions); the red-team module replaces
+  pytest; user parameters (risk tolerance, horizon, budget, intended use)
+  are escalation-worthy forks. Trigger description widened to match.
+  Evidence: live OpenClaw session declined a market-analysis request as
+  "not a software project" — correct triage logic, too-narrow task model.
+  Provenance: user statement.

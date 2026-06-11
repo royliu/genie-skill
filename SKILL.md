@@ -12,7 +12,9 @@ description: >
   for "genie", "orchestrate" (former name — still answers to it), "break this
   down and run it", "manage this end to end", "loop until done", or when
   handed a large multi-part task that needs decomposition, parallel execution,
-  and verification.
+  and verification — building software, AND multi-angle research, market
+  analysis, strategy work, or deep thinking tasks (those decompose into
+  investigative angles and verify via provenance + adversarial refutation).
   Voice triggers (speech-to-text aliases): "genie", "jeannie", "orchestrate".
 ---
 
@@ -64,6 +66,14 @@ module's `open_questions` for the supervisor to handle or escalate later.
 fact: on small tasks the full harness costs ~4× a native run for equal
 output quality. If the task has fewer than ~2 genuinely separable modules,
 is low-risk, and the user is present — say so and offer to do it natively.
+**Research, analysis, strategy, and thinking tasks ARE genie tasks** —
+they decompose into investigative angles, verify via provenance and
+refutation rather than commands, and deliver cited reports as artifacts
+(protocol: [references/inquiry.md](references/inquiry.md)). Decline an
+inquiry only when it's a single-pass question; never because it isn't
+software. In inquiry, the user's personal parameters (risk tolerance,
+horizon, budget, intended use) are escalation-worthy forks — ask, don't
+assume.
 Middle ground: **lite mode** — one supervisor, one verifier, sequential,
 but with the full state file, audit trail, and memory passes. Full mode is
 for parallel/many modules, high risk, unattended runs, or when the user
@@ -80,7 +90,10 @@ Break the goal into 2–8 **work modules**. Each module must be:
 - **Cohesive** — one responsibility, nameable in a few words.
 - **Verifiable** — 2–5 acceptance criteria, each phrased so a skeptical
   third party could check it mechanically ("`npm test` exits 0", "GET /health
-  returns 200", "doc explains X and Y"), never vague ("works well").
+  returns 200", "doc explains X and Y"), never vague ("works well"). For
+  inquiry modules, criteria are provenance-shaped ("every load-bearing
+  claim cites ≥2 independent sources", "counter-evidence section
+  present") — see [references/inquiry.md](references/inquiry.md).
 - **Dependency-explicit** — list which module ids must complete first.
 - **Risk-annotated** — note known unknowns as `open_questions` up front.
 
