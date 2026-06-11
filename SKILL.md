@@ -124,11 +124,26 @@ Show the user the module breakdown (brief table: module, goal, deps,
 verification), any memories applied as pre-made decisions (so they can
 veto them), **and the cost estimate with alternatives** — e.g. "full: ~5
 agents, ~120–180k tokens · lite: ~2 agents, ~50–70k · native: ~30k, no
-verification/audit" — before dispatching. If the user is present and the
-estimate exceeds `budget.confirm_over_tokens` (default 60k), WAIT for
-explicit go-ahead; below it, or running unattended, proceed but post the
-estimate so the cost is never a surprise. A user reply choosing a cheaper
-mode is a normal steering action — re-plan, don't argue.
+verification/audit" — before dispatching. Then apply
+`budget.confirm_mode`:
+
+- **`always` (the default):** WAIT for the user's explicit concurrence
+  before dispatching ANY agent — every run, regardless of size. No reply
+  yet? Do not dispatch and do not poll: leave the run `pending` with the
+  plan and estimate saved, notify once, and resume the moment they answer
+  (their reply may also pick a cheaper mode — re-plan, don't argue).
+- **`over-threshold`:** ask only when the estimate exceeds
+  `confirm_over_tokens` (default 60k); otherwise proceed, posting the
+  estimate.
+- **`autopilot`:** never ask — proceed immediately, posting the estimate
+  so cost is visible, with the budget caps as the only brakes.
+
+The user sets autopilot by saying so ("autopilot", "stop asking before
+runs", "don't ask again") — record it as a standing `user` memory
+(provenance: user-statement) so it persists across runs and hosts, and
+confirm once that it's set and how to revert ("ask me again before
+runs"). A per-run override in either direction always wins over the
+stored mode.
 
 ## Phase 2 — Execution loop
 

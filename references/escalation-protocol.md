@@ -108,6 +108,7 @@ iteration's input.
     "cost_ceiling_usd": null,
     "deadline_minutes": null,
     "tokens_estimated": null,
+    "confirm_mode": "always | over-threshold | autopilot",
     "confirm_over_tokens": 60000,
     "on_exhausted": "pause-and-ask"
   },

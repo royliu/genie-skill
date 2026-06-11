@@ -58,3 +58,14 @@ explicitly user-approved.
   Retro rubric gains estimate-accuracy check; the estimator self-calibrates
   from ledger actuals. Evidence: user reported surprise token burn kicking
   off runs on OpenClaw. Provenance: user statement.
+
+## 2026-06-11 — concurrence gate with autopilot opt-out (user-directed)
+
+- **`budget.confirm_mode`, default `always`**: the cost preflight now
+  requires explicit user concurrence before dispatching any agent on
+  every run. No reply = run held `pending` with plan+estimate saved (one
+  notification, no polling, no spend). `over-threshold` keeps the old 60k
+  behavior; `autopilot` never asks (estimate still posted, budget caps
+  still brake). Saying "autopilot"/"don't ask again" persists as a
+  standing user memory across runs and hosts; "ask me again before runs"
+  reverts; per-run overrides always win. Provenance: user statement.
