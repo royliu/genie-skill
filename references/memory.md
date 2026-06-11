@@ -31,6 +31,7 @@ source_run: add-auth-2026-06-10
 status: tentative | standing
 provenance: user-statement | orchestrator-decision | retro-analysis
 scope: machine | user | global
+times_applied: 0
 last_confirmed: 2026-06-10
 ---
 Prefers httpOnly cookie auth over Authorization headers for web apps.
@@ -78,6 +79,15 @@ to inspect the genie's knowledge graph visually.
    consolidate it (the memory was wrong or too broad).
 5. A current user instruction always beats a memory. On conflict, follow the
    instruction and queue an UPDATE for the distill pass.
+6. **Track salience**: increment `times_applied` on every memory that
+   became a decision or an escalation recommendation this run. Usage is
+   the prune/protect signal dreams rely on.
+7. **Report the gaps, not just the hits.** End recall with a
+   known/unknown split: forks this plan must decide that NO memory covers
+   get listed explicitly ("no memory covers: auth method, deploy
+   target"). Those gaps are precisely the escalation candidates, and the
+   final report's open-items section inherits any that survive the run.
+   Recall's silence must be informative, never invisible.
 
 ## Distill (runs in Phase 3, after the final report)
 
@@ -110,9 +120,15 @@ For each candidate memory:
 4. **Overlap, contradicts → newer wins**: rewrite the memory to the new
    fact, note the supersession in the body; if the old memory was simply
    wrong (e.g. vetoed at recall), DELETE the file and its INDEX line.
-5. **Prune**: if a namespace exceeds ~50 memories, delete the oldest
-   `tentative` ones first. A bloated store makes recall noisy, which is
-   worse than no store.
+5. **Prune**: if a namespace exceeds ~50 memories, prune by salience —
+   `times_applied: 0` after ~10 runs is the signal, oldest `tentative`
+   first; never prune a high-`times_applied` memory for age alone. A
+   bloated store makes recall noisy, which is worse than no store.
+6. **Auto-link mechanically** (zero judgment needed, always correct):
+   memories distilled from the same `source_run` get `derived-from`
+   sibling links; an UPDATE that replaces a memory's content records a
+   `supersedes` link to what it replaced. Judgment-based links (supports,
+   contradicts, refines) remain the dream's job.
 
 Report distilled memories (added/updated/deleted) as the last line of the
 run's final report, so the user always knows what the harness will "know"
@@ -161,3 +177,14 @@ boundary:
   travel as **skill amendments** (evidence-cited diffs via AMENDMENTS.md /
   Skill Workshop), which are reviewable, scanned, and stripped of personal
   context by construction.
+
+## Scale exit ramp: the gbrain bridge
+
+Grep + graph recall is the right design at ≤~50 memories per namespace —
+small and curated beats large and searchable for pre-making decisions. If
+the stores genuinely outgrow that (dreams will notice recall getting
+noisy), do not bolt on vectors here: index `~/.genie/memory/` into a
+gbrain instance (hybrid vector+graph retrieval, MCP-exposed) and delegate
+semantic search to it. Markdown stays the system of record either way —
+gbrain treats the database as a cache over git-versioned markdown — so
+the migration is non-destructive and reversible.

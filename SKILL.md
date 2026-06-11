@@ -354,11 +354,25 @@ mtimes in 30 min, ≤1 dream per ~20h, skip when nothing changed). Runs
 outrank dreams: yield immediately if a run starts. Notify the user only
 when a proposal was filed.
 
+## Know mode (query the genie's knowledge)
+
+If invoked as `know <topic>` (or asked "what do you know/believe about
+X"): pure read, no agents, no run. Recall as in Phase 0 (index → relevant
+files → one link-hop), then answer in two tiers like a brain, not a
+grep: **what I know** — composed prose citing memory ids and ledger
+lines, with status/provenance noted ("standing, you stated it";
+"tentative, seen once") — and **what I don't know** — the gaps adjacent
+to the topic, stated plainly. Honest emptiness ("nothing recorded about
+X") beats padding. This is also how other skills should query genie's
+knowledge.
+
 ## Setup mode
 
 If invoked as `setup`: wire the installation, don't do project work.
 Create `~/.genie/{memory/user,memory/process,dreams}` and an empty
-`runs.jsonl` if missing; `chmod +x scripts/dream-guard.sh` and run it once
+`runs.jsonl` if missing; offer to `git init ~/.genie` so the genie's
+beliefs are versioned — diffable dreams, soft-delete via history, and
+cross-machine sync becomes `git pull` (markdown is the system of record); `chmod +x scripts/dream-guard.sh` and run it once
 (exit 0 or a named skip reason both mean healthy); detect Skill Workshop
 (is a `skill_workshop` tool available?) and record which amendment path
 applies; on OpenClaw print the exact heartbeat/cron line for dream mode, on

@@ -42,7 +42,10 @@ Stages, in order:
    tentatives with 2+ confirmations to standing, demote or prune
    tentatives unconfirmed after ~10 runs or 60 days, rebuild INDEX.md
    files to match reality. Mark every touched memory with
-   `consolidated: <date>` in its frontmatter. **Tend the link graph**:
+   `consolidated: <date>` in its frontmatter. Prune by **salience**, not
+   age alone: `times_applied: 0` after ~10 runs is the prune signal;
+   high-`times_applied` memories are protected, and the dream report
+   names the most load-bearing memories. **Tend the link graph**:
    repair links left dangling by pruned or renamed memories, add missing
    `[[links]]` between plainly related memories (sparingly — links must
    be decision-relevant), and read topology as consolidation signal:

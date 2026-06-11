@@ -73,8 +73,9 @@ supervisors"), the harness may propose editing its own files:
    root (create on first use): date, what changed, source memory id,
    evidence runs.
 4. The amended rule now supersedes the memory — delete the memory (note
-   "promoted to skill" in the AMENDMENTS entry) so recall doesn't
-   double-apply it.
+   "promoted to skill" in the AMENDMENTS entry, citing it as `[[id]]` so
+   the chain of custody stays followable) so recall doesn't double-apply
+   it.
 
 Bounds:
 
@@ -108,3 +109,6 @@ adopted published skill version. Import rules:
   and artifact-based so every import has a reviewable gate in front of it.
 - Exports must be sanitized (no paths, names, project details, secrets) —
   the amendment format does most of this by construction; check anyway.
+- Imports are content-hashed: record the bundle's hash on import and
+  short-circuit re-imports of an unchanged bundle — re-reviewing
+  identical content is wasted gate time and dulls the reviewer.

@@ -80,3 +80,23 @@ explicitly user-approved.
   read topology (clusters → merge, orphans → prune, contradictions →
   work orders). The store remains a valid Obsidian vault for visual
   inspection of the genie's knowledge graph. Provenance: user statement.
+
+## 2026-06-11 — gbrain adoptions (user-directed; ideas imported from garrytan/gbrain)
+
+Six design ideas adopted from gbrain, infrastructure deliberately not:
+- **Mechanical auto-linking at distill** (typed edges, zero judgment):
+  same-source_run siblings get `derived-from`; UPDATEs record `supersedes`;
+  AMENDMENTS entries cite promoted memories as `[[id]]`.
+- **Gap-aware recall**: recall ends with a known/unknown split; uncovered
+  forks are named explicitly and become the escalation candidates.
+- **Salience tracking**: `times_applied` counter; recall increments,
+  dreams prune by disuse and protect load-bearing memories.
+- **Git as system of record**: setup offers `git init ~/.genie`
+  (versioned beliefs, diffable dreams, sync = pull); amendment-bundle
+  imports content-hashed to short-circuit re-review.
+- **`know <topic>` mode**: two-tier query (composed answer with memory/
+  ledger citations + honest gaps), no agents, no run.
+- **gbrain bridge documented as the scale exit ramp** (>~50 memories/
+  namespace → index the store into gbrain; markdown stays authoritative).
+Rejected: vector/hybrid search and schema packs (wrong scale for a
+curated ≤50/namespace store). Provenance: user statement.
