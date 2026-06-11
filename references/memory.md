@@ -42,10 +42,31 @@ orchestrator decision). `standing` = confirmed on a second run, or the user
 stated it as a general rule ("always X"). Promotion happens during
 consolidation.
 
+## Linking (Obsidian-style)
+
+Memories link to related memories with `[[memory-id]]` in the body, and
+may annotate the relation on a `Related:` line:
+
+```
+Related: [[lite-mode-cost-parity]] (supports), [[old-venv-rule]] (supersedes)
+```
+
+Relations: `supports`, `refines`, `supersedes`, `contradicts`,
+`derived-from`. Link only when the relation would change a decision —
+"see also" spam makes recall worse, not better. A `[[id]]` that doesn't
+exist yet is allowed (it marks something worth distilling later), but
+links left dangling by a pruned memory must be repaired during dreams.
+The store is a valid Obsidian vault — point Obsidian at the memory dir
+to inspect the genie's knowledge graph visually.
+
 ## Recall (runs in Phase 0, before restating intent)
 
 1. Read both `INDEX.md` files; read full files for entries relevant to the
-   goal. Missing stores are fine — skip silently.
+   goal, then expand **one hop** through their `[[links]]` — and no
+   further (bounded traversal keeps recall from pulling the whole store
+   into context). A `contradicts` link between two recalled memories
+   means neither is applied silently — surface the conflict. Missing
+   stores are fine — skip silently.
 2. Apply **standing** memories as pre-made decisions: log each in
    `state.json.decisions` with `"by": "memory"` and the memory id, and feed
    them into module specs as already-decided constraints.

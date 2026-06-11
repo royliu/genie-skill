@@ -42,7 +42,13 @@ Stages, in order:
    tentatives with 2+ confirmations to standing, demote or prune
    tentatives unconfirmed after ~10 runs or 60 days, rebuild INDEX.md
    files to match reality. Mark every touched memory with
-   `consolidated: <date>` in its frontmatter.
+   `consolidated: <date>` in its frontmatter. **Tend the link graph**:
+   repair links left dangling by pruned or renamed memories, add missing
+   `[[links]]` between plainly related memories (sparingly — links must
+   be decision-relevant), and read topology as consolidation signal:
+   densely linked clusters are merge/promote candidates, long-unlinked
+   orphans are prune candidates, and every `contradicts` edge is a work
+   order.
 2. **Cross-run analysis.** Read the FULL ledger (`runs.jsonl`), not the
    retro's 5-line window: metric trends (verifier escapes, iteration
    averages, escalation mix), recurring escalations across projects

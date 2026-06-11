@@ -69,3 +69,14 @@ explicitly user-approved.
   still brake). Saying "autopilot"/"don't ask again" persists as a
   standing user memory across runs and hosts; "ask me again before runs"
   reverts; per-run overrides always win. Provenance: user statement.
+
+## 2026-06-11 — memory linking, Obsidian-style (user-directed)
+
+- **`[[memory-id]]` wikilinks between memories** with optional typed
+  relations (supports / refines / supersedes / contradicts / derived-from).
+  Recall expands one hop through links (bounded); a `contradicts` edge
+  between recalled memories is surfaced, never silently applied. Dreams
+  tend the graph: repair dangling links, add decision-relevant ones,
+  read topology (clusters → merge, orphans → prune, contradictions →
+  work orders). The store remains a valid Obsidian vault for visual
+  inspection of the genie's knowledge graph. Provenance: user statement.
