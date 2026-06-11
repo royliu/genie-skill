@@ -1,8 +1,10 @@
 ---
 name: genie
 description: >
-  Genie — state a wish, get a verified result. Hierarchical multi-agent work
-  harness: decomposes the user's intent into
+  Genie — state a wish, approve the price, get a verified result.
+  Hierarchical multi-agent work harness: quotes estimated cost before
+  dispatching anything (user concurrence required by default), decomposes
+  the user's intent into
   verifiable work modules, runs each module under a supervisor agent that loops
   until its acceptance criteria pass independent verification, and routes
   uncertainty up a chain (worker -> supervisor -> orchestrator -> user) so the

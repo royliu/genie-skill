@@ -1,13 +1,17 @@
 # 🧞 Genie
 
-**State a wish. Get a verified result.**
+**State a wish. Approve the price. Get a verified result.**
 
-Genie is a portable, self-improving multi-agent work harness packaged as a
-single [Agent Skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) —
+Genie is a portable, self-improving work harness packaged as a single
+[Agent Skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) —
 plain markdown and JSON, no framework, no server. Drop it into Claude Code,
 OpenClaw, Codex CLI, or any SKILL.md-compatible agent and it turns that
-agent into a delegation system that decomposes big tasks, loops until done,
-verifies everything independently, and gets measurably better with every run.
+agent into a trustworthy employee with a memory: it **quotes the cost
+before working**, decomposes and **independently verifies** everything it
+builds or researches, asks only the questions that are truly yours,
+remembers every lesson in an **inspectable knowledge graph**, improves its
+own playbook with your sign-off — and shares what it proves with every
+other agent you run. Smarter on every wish than the last.
 
 ```
 You
