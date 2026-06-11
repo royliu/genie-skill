@@ -40,6 +40,18 @@ JSON from escalation-protocol.md section 3.
 The pieces Claude Code's harness provides invisibly that you must do
 explicitly when the host is OpenClaw or Hermes.
 
+### Token budget for the skill itself
+
+The skill's own loading is a real cost on OpenClaw: every skill's
+**description** is injected into every prompt (keep it ≤~300 chars — it
+is per-message overhead forever), and the **SKILL.md body** rides along
+on each turn of a multi-turn run, so body size multiplies by turn count.
+Keep the skill lean, enable prompt caching where the deployment supports
+it, and respect the lazy-loading rule: references are read only at the
+moment of need — an orchestrator that preloads them at startup is
+misbehaving, and "burns tokens before delivering anything" is the
+symptom.
+
 ### Progress & notifications
 
 There is no live progress tree, so the channel (Telegram / Discord /

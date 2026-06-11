@@ -100,3 +100,17 @@ Six design ideas adopted from gbrain, infrastructure deliberately not:
   namespace → index the store into gbrain; markdown stays authoritative).
 Rejected: vector/hybrid search and schema packs (wrong scale for a
 curated ≤50/namespace store). Provenance: user statement.
+
+## 2026-06-11 — startup weight loss (user-directed)
+
+- User reported genie on OpenClaw "burns tokens from the get-go before
+  delivering anything." Measured causes and fixes:
+  frontmatter description 1,192 → 370 chars (injected into EVERY OpenClaw
+  prompt); SKILL.md ~5.8k → ~3.7k tokens (-37%, re-carried per turn of a
+  run) via a compression pass with zero rules removed; new **token
+  discipline** block (never preload references — each phase/mode reads
+  only its own doc at the moment of need; pre-quote work limited to
+  memory indexes + a project listing + two small file writes); the
+  state.json skeleton inlined so escalation-protocol.md is no longer a
+  mandatory 1.8k read per run; porting.md gains an OpenClaw token-budget
+  note. Provenance: user statement.
