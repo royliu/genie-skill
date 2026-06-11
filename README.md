@@ -65,12 +65,12 @@ verification, audit, and memory. The improvements between runs were made
 
 **Claude Code**
 ```bash
-git clone https://github.com/USER/genie ~/.claude/skills/genie
+git clone https://github.com/royliu/genie ~/.claude/skills/genie
 ```
 
 **OpenClaw / Hermes**
 ```bash
-git clone https://github.com/USER/genie ~/.openclaw/skills/genie
+git clone https://github.com/royliu/genie ~/.openclaw/skills/genie
 ```
 
 Then, from your agent: `/genie setup` — creates the data stores
