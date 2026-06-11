@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "escalation.schema.json",
+  "title": "Escalation",
+  "type": "object",
+  "required": ["id", "module", "type", "blocking", "question", "context", "recommendation"],
+  "properties": {
+    "id": { "type": "string" },
+    "module": { "type": "string" },
+    "type": { "enum": ["question", "blocker", "suggestion"] },
+    "blocking": { "type": "boolean" },
+    "question": { "type": "string" },
+    "context": { "type": "string" },
+    "options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label"],
+        "properties": {
+          "label": { "type": "string" },
+          "consequence": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "recommendation": { "type": "string" },
+    "resolution": { "type": ["string", "null"] },
+    "resolved_by": { "enum": ["orchestrator", "user", "memory", null] }
+  },
+  "additionalProperties": false
+}

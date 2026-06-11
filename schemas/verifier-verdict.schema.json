@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "verifier-verdict.schema.json",
+  "title": "Verifier verdict (the ONLY content of a verifier's final message)",
+  "type": "object",
+  "required": ["module", "verdict", "criteria"],
+  "properties": {
+    "module": { "type": "string" },
+    "verdict": { "enum": ["pass", "fail"] },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["criterion", "met", "evidence"],
+        "properties": {
+          "criterion": { "type": "string" },
+          "met": { "type": "boolean" },
+          "evidence": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "additional_findings": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
