@@ -107,6 +107,8 @@ iteration's input.
     "agents_spawned": 0,
     "cost_ceiling_usd": null,
     "deadline_minutes": null,
+    "tokens_estimated": null,
+    "confirm_over_tokens": 60000,
     "on_exhausted": "pause-and-ask"
   },
   "modules": [

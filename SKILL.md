@@ -113,10 +113,22 @@ activity past `stale_after`), take over and log the takeover as a decision.
   attempt count, criteria results, plus a `decisions` log and an
   `escalations` log.
 
+**Cost preflight.** Before dispatching, estimate the run: count planned
+sub-agents (supervisors + judgment verifiers — mechanical verification is
+free), multiply by the calibrated per-agent cost (mean `tokens / agents`
+over the last ~5 ledger lines in `~/.genie/runs.jsonl`; fall back to 28k
+when the ledger is thin), add ~15% orchestrator overhead, and present a
+range (±30%). Record it as `budget.tokens_estimated` in `state.json`.
+
 Show the user the module breakdown (brief table: module, goal, deps,
-verification), plus any memories applied as pre-made decisions (so they can
-veto them), before dispatching. If running interactively, this is the one
-natural checkpoint to let them redirect; if running autonomously, proceed.
+verification), any memories applied as pre-made decisions (so they can
+veto them), **and the cost estimate with alternatives** — e.g. "full: ~5
+agents, ~120–180k tokens · lite: ~2 agents, ~50–70k · native: ~30k, no
+verification/audit" — before dispatching. If the user is present and the
+estimate exceeds `budget.confirm_over_tokens` (default 60k), WAIT for
+explicit go-ahead; below it, or running unattended, proceed but post the
+estimate so the cost is never a surprise. A user reply choosing a cheaper
+mode is a normal steering action — re-plan, don't argue.
 
 ## Phase 2 — Execution loop
 

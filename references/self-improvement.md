@@ -43,6 +43,12 @@ last ~5 ledger lines, no agents needed. Five questions:
    prose; any verifier escapes on the ledger.
 5. **Trends.** Across the recent ledger lines, is any metric worsening
    (escapes rising, iterations climbing, user-escalations not shrinking)?
+6. **Estimate accuracy.** Compare actual `tokens` against
+   `tokens_estimated`. Off by more than ~40%? Note why (module bigger than
+   sized, extra verifier rounds, retries). The preflight reads its
+   per-agent constant from recent ledger lines, so accurate `tokens`
+   recording IS the recalibration; flag systematic bias as a process
+   memory.
 
 Each finding becomes a `process/` memory through the standard consolidation
 path in memory.md — `tentative` on first observation, promoted to

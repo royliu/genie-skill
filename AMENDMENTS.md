@@ -47,3 +47,14 @@ explicitly user-approved.
   Evidence: live OpenClaw session declined a market-analysis request as
   "not a software project" — correct triage logic, too-narrow task model.
   Provenance: user statement.
+
+## 2026-06-11 — cost preflight (user-directed)
+
+- **Phase 1 cost gate**: before dispatch, estimate the run (planned agents
+  × ledger-calibrated per-agent cost + 15% overhead, ±30% range), record
+  as `budget.tokens_estimated`, present alongside the module breakdown
+  with lite/native alternatives, and WAIT for go-ahead when the user is
+  present and the estimate exceeds `confirm_over_tokens` (default 60k).
+  Retro rubric gains estimate-accuracy check; the estimator self-calibrates
+  from ledger actuals. Evidence: user reported surprise token burn kicking
+  off runs on OpenClaw. Provenance: user statement.
