@@ -17,7 +17,74 @@ You
      └─ Integrator          ← cross-module verification at the end
 ```
 
-## Why
+## The thesis
+
+Today's agents are amnesiacs with good intentions. Every session starts
+from zero: the lesson learned at 2pm dies with the context window at 3pm,
+the preference you explained on Monday gets asked again on Thursday, and a
+mistake fixed on one machine is faithfully repeated on every other. The
+industry's answer has been bigger context windows and better models —
+making the amnesiac smarter, not curing the amnesia.
+
+Genie's answer is three nested loops, each feeding the next:
+
+1. **Trust** — within a run, nothing is done until independently verified.
+   This is the foundation: an agent whose claims you can't trust has
+   nothing worth remembering.
+2. **Learning** — across runs, verified outcomes distill into memory, a
+   quality ledger (including *verifier escapes* — defects that got past
+   verification), and ultimately **amendments to the harness's own
+   instructions**. The skill you run in month two is provably better than
+   the one you installed, and you approved every change that made it so.
+3. **Evolution** — across agents, proven practices travel as
+   evidence-cited amendment bundles. The receiving agent doesn't take
+   them on faith: every imported practice **re-earns standing locally**
+   against its own ledger before being trusted. Knowledge propagates the
+   way science does — by replication — not the way gossip does, by
+   repetition. Practices that only worked in one context correctly fail
+   to spread; practices that hold everywhere become everyone's defaults.
+
+The endgame: skills as living documents, evolved by the collective
+verified experience of every agent running them, governed by the humans
+they work for. **One agent improves; a million agents evolve** — and no
+single bad run, bad actor, or bad memory can poison the pool, because
+every hop has a gate: provenance checks at distill, human approval at
+amendment, local re-validation at import.
+
+## Loops all the way down
+
+The central design primitive is not the agent — it's the **bounded loop**.
+Genie never assumes anything works on the first try; it assumes everything
+converges through iteration, and that every iteration needs two things: a
+**convergence test** (how the loop knows it's done) and a **bound** (what
+stops it from running away). Seven loops, nested like gears at different
+speeds:
+
+| Loop | Cycle time | Converges when | Bounded by |
+|---|---|---|---|
+| Worker self-check | seconds | own criteria self-pass | 5 internal iterations |
+| Supervisor ↔ verifier | minutes | independent verifier passes | 3 rounds, then escalate |
+| Run execution | hours | all modules verified + integrated | budget, deadline, watchdog |
+| Memory | days | tentative → standing (2-run confirmation) | provenance, quarantine, veto |
+| Dream | daily, idle-time | store consolidated, drift pruned | no new facts, no live writes |
+| Amendment | weeks | proposal approved → skill text | 1/run, human gate, safety zones amendment-proof |
+| Network | months | imported practice re-earns standing | local re-validation, Workshop scanning |
+
+Every layer's failure is the next layer's input: a worker's failed
+self-check feeds its next iteration; a failed verification feeds the
+supervisor's next attempt; a run's defects feed the retro; the retro's
+patterns feed dreams; dreamed insights feed amendments; amended skills
+feed the network. Nothing converging? That itself escalates — a loop that
+won't close is treated as information, never as something to brute-force.
+
+The bounds matter as much as the loops. An unbounded self-improving loop
+is how you get drift, runaway cost, or a harness optimizing itself instead
+of your work. Every gate in the table is load-bearing, and the innermost
+rule propagates all the way out: the same skepticism a verifier applies to
+a worker's "done" is applied to a memory's "true," an amendment's
+"better," and an imported practice's "proven."
+
+## Why (the practical version)
 
 Handing an agent a big task usually buys you a confident summary you then
 have to re-audit yourself. Genie inverts that:
