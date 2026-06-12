@@ -229,3 +229,20 @@ curated ≤50/namespace store). Provenance: user statement.
   evidence process when its trigger first actually occurs.
 - Efficacy status of this amendment: its target metric is the protocol
   itself — measured: -77% protocol mass, zero guarantees lost.
+
+## 2026-06-12 — v2.0.1: efficacy audit (retro, run predmarket-research-2026-06-12)
+
+- **Cost preflight → `efficacy: validated`**: 2 in-range quotes of 3
+  (run-4 hit, run-5 miss root-caused into the task-type constant, run-6
+  hit using that correction: quoted 95–175k, actual 113.1k).
+- **v1.14 stakes-weighted token target → `efficacy: refuted`**: actual
+  3.4x native vs ≤2.4x target. Mechanism retained (harmless, focused the
+  attack — all 6 claims still verified at 61.8k vs run-5's 64.6k for
+  broader scope) but the COST CLAIM is dead: multi-source live
+  verification is irreducibly ~55–65k/agent. Inquiry floor ≈ 3–3.5x
+  native when claims need web corroboration; the cost levers for inquiry
+  are lite (no red-team) and audit mode (verification only), not thinner
+  full mode. **Progressive delivery → validated** (draft delivered
+  before verdict, both runs).
+- Memory [[inquiry-agents-cost-more]] promoted to STANDING (2nd
+  confirmation: 56.5k/agent).
