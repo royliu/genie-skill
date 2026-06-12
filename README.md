@@ -121,6 +121,8 @@ brake trips or a question is genuinely yours.
 | `genie status` | dashboard: version, validation debt, last dream pass, memory census, runs |
 | `genie know <question>` | any question over its memory/history, answered with citations |
 | `genie dream` | manual passive-learning pass (the cron does this automatically) |
+| `genie remember <fact>` | instant memory write — no waiting for a dream pass |
+| `genie forget <id\|that>` | delete a memory, logged |
 | `genie setup` | install wiring + readiness check (idempotent) |
 
 **Mid-run steering:** `status` · `pause` · `resume` · `cancel` ·

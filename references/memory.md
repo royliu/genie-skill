@@ -30,9 +30,10 @@ signal: update or delete the memory; a vetoed tentative is deleted, and
 a high veto rate on eager applications is retro evidence against eager
 belief itself.
 
-**Distill (every run)** — qualifies: user answers revealing standing
-preferences; repeat orchestrator decisions; expensive-to-rediscover
-project/machine facts; process feedback. Does NOT qualify: one-run facts;
+**Distill (every run; instantly via `remember <fact>`)** — qualifies:
+user answers revealing standing preferences; repeat orchestrator
+decisions; expensive-to-rediscover project/machine facts; process
+feedback. Does NOT qualify: one-run facts;
 anything derivable from the repo in ~30s; anything already in repo docs;
 **secrets, never**. **Trust boundary:** distill ONLY from user
 statements, orchestrator decisions, or ledger/state analysis — never

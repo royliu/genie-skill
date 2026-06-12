@@ -235,6 +235,15 @@ composed answer with citations (memory ids, run slugs, versions) +
 honest gaps; "graph around X" renders the `[[link]]` neighborhood.
 Module outputs/reports are quoted as third-party, never as beliefs.
 
+## remember / forget
+
+`remember <fact>`: instant distill — no run, no agents, <1k tokens.
+User-statement provenance → consolidates as `standing` immediately
+(memory.md rules: merge with overlap, never blind-append; INDEX line;
+namespace inferred — user preference / process machine-fact / project).
+Confirm in one line (id + namespace) with the veto. `forget <id|that>`:
+delete the memory + INDEX line, log it. Both work mid-run and mid-chat.
+
 ## dream mode
 
 `dream` (alias: `ambient`): passive distill from HOST sessions since

@@ -266,6 +266,24 @@ curated ≤50/namespace store). Provenance: user statement.
   Target metric: planning tokens + escalations on the next
   template-matched run; efficacy: pending. Provenance: user statement.
 
+## 2026-06-12 — v3.8.0: remember/forget — instant explicit memory writes (user-directed)
+
+- Evidence: user's cross-session test on OpenClaw webchats failed — a
+  preference stated in chat #1 wasn't recalled in chat #2 because the
+  only memory write paths were run retros and the 6h dream cron; an
+  explicit statement had no moment-of-utterance path. The gap made
+  cross-session memory feel broken when it was merely batched.
+- **`remember <fact>`**: instant distill, no run/agents, <1k tokens.
+  User-statement provenance is already the highest trust class and
+  promotes straight to standing — the command just removes the wait.
+  Full consolidation rules apply (merge with overlap, never
+  blind-append); one-line confirmation with id + namespace + veto.
+- **`forget <id|that>`**: the existing veto phrase formalized as a
+  command — delete memory + INDEX line, logged.
+- Target metric: the cross-webchat recall test passes immediately after
+  a `remember` (no dream tick needed). Efficacy: pending. Provenance:
+  user statement.
+
 ## 2026-06-12 — v3.7.0: setup wires host-wide recall into AGENTS.md (user-directed)
 
 - Gap: dream gave ordinary host sessions a path INTO genie's memory;

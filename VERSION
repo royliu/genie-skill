@@ -1,2 +1,2 @@
-3.7.1
-latest: setup wires recall into AGENTS.md (v3.7.0); README rewritten for v3.x — usage + best practices, benchmarks removed
+3.8.0
+latest: remember/forget — say "genie remember X" and it lands in standing memory instantly; no waiting for a dream pass
