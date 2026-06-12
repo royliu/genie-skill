@@ -132,3 +132,14 @@ curated ≤50/namespace store). Provenance: user statement.
   the user's actual tasks. Convergences noted for the record:
   SkillOpt-Sleep ≈ dream mode; their 300–2k-token artifact cap
   corroborates [[watch-always-loaded-weight]]. Provenance: user statement.
+
+## 2026-06-11 — efficacy data (retro, run bookmarks-api-2026-06-11)
+
+- **Cost preflight** (target metric: estimate accuracy): first live audit —
+  quoted 53–98k (center 75k), actual subagent tokens 84,104: IN RANGE,
+  +12% over center. One clean hit; `efficacy: pending` until a second run
+  confirms (two-confirmation discipline).
+- **Concurrence gate** (target: no unapproved spend): held twice this
+  session, including once when conversational momentum assumed results
+  existed. Behavioral validation; `efficacy: pending` formally, working
+  observably.
