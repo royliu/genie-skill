@@ -59,11 +59,15 @@ Stages, in order:
    (candidates for standing defaults). New findings enter as `tentative`
    memories citing the ledger lines as evidence.
 3. **Draft amendments.** If a standing, general process rule is not yet
-   reflected in the skill files: draft ONE proposal (the best one).
+   reflected in the skill files: draft ONE proposal (the best one) —
+   consulting `~/.genie/dreams/rejected.md` first (re-proposing a
+   rejected or refuted idea requires NEW evidence) and naming the target
+   ledger metric it should move, per self-improvement.md.
    On OpenClaw ≥ 2026.6.1: file it as a pending `skill_workshop` proposal
    citing memory id + evidence runs — never apply. Elsewhere: write the
    diff to `~/.genie/dreams/proposals/` for the next interactive
-   session to surface for approval.
+   session to surface for approval. Also audit prior amendments still
+   `efficacy: pending` against the full ledger while you're here.
 4. **Dream report.** Write `~/.genie/dreams/<date>.md`: exactly what
    was merged/promoted/pruned, findings, proposal filed (or "none"), and
    anything that looked wrong but lacked evidence to act on. Touch

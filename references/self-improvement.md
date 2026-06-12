@@ -49,6 +49,13 @@ last ~5 ledger lines, no agents needed. Five questions:
    per-agent constant from recent ledger lines, so accurate `tokens`
    recording IS the recalibration; flag systematic bias as a process
    memory.
+7. **Amendment efficacy.** For every AMENDMENTS entry still
+   `efficacy: pending`: did this run's ledger move the amendment's target
+   metric in the expected direction? Enough evidence → mark `validated`
+   (or `refuted`). A refuted amendment becomes a **rollback proposal**
+   through the normal gate, and goes in the rejected buffer. Improvements
+   are claims too — they re-earn their place the same way imported
+   practices do.
 
 Each finding becomes a `process/` memory through the standard consolidation
 path in memory.md — `tentative` on first observation, promoted to
@@ -63,7 +70,12 @@ rather than a personal preference (e.g. "acceptance criteria must name the
 exact command to run", "this machine should default to 2 parallel
 supervisors"), the harness may propose editing its own files:
 
-1. Draft a concrete diff to SKILL.md / references/ / schemas/.
+1. Draft a concrete diff to SKILL.md / references/ / schemas/ — and name
+   the **target metric** it should move (a ledger field or measurable
+   property: escalations, schema deviations, verifier escapes, tokens,
+   estimate accuracy, always-loaded size) with expected direction.
+   Consult `~/.genie/dreams/rejected.md` first: re-proposing a rejected
+   or refuted idea requires NEW evidence, not persistence.
 2. Present it to the user: the memory, the evidence runs from the ledger,
    and the exact before/after text. Apply **only on explicit approval** —
    never silently. A harness that edits its own instructions unsupervised
@@ -71,7 +83,9 @@ supervisors"), the harness may propose editing its own files:
    property, not a formality.
 3. On approval: apply the edit and log it in `AMENDMENTS.md` at the skill
    root (create on first use): date, what changed, source memory id,
-   evidence runs.
+   evidence runs, target metric, and `efficacy: pending`.
+   On rejection: log the proposal + the user's reason in
+   `~/.genie/dreams/rejected.md` (the rejected-edit buffer).
 4. The amended rule now supersedes the memory — delete the memory (note
    "promoted to skill" in the AMENDMENTS entry, citing it as `[[id]]` so
    the chain of custody stays followable) so recall doesn't double-apply

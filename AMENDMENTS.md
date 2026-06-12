@@ -114,3 +114,21 @@ curated ≤50/namespace store). Provenance: user statement.
   state.json skeleton inlined so escalation-protocol.md is no longer a
   mandatory 1.8k read per run; porting.md gains an OpenClaw token-budget
   note. Provenance: user statement.
+
+## 2026-06-11 — SkillOpt adoptions (user-directed; ideas imported from microsoft/SkillOpt)
+
+- **Amendment efficacy tracking**: every proposal names a target ledger
+  metric + expected direction; AMENDMENTS entries carry
+  `efficacy: pending|validated|refuted`; retros (new rubric item 7) and
+  dreams audit pending entries against the ledger; refuted → rollback
+  proposal through the normal gate. Improvements are claims that re-earn
+  their place — closes the "who verifies the improvements?" hole.
+- **Rejected-edit buffer**: `~/.genie/dreams/rejected.md` logs rejected
+  and refuted proposals with reasons; dreams/retros consult it before
+  drafting; re-proposal requires new evidence.
+- Considered and NOT adopted: SkillOpt's optimizer-model training loop
+  (epochs/batches over scored benchmarks) — genie improves from real
+  work, not synthetic rollouts; no benchmark score function exists for
+  the user's actual tasks. Convergences noted for the record:
+  SkillOpt-Sleep ≈ dream mode; their 300–2k-token artifact cap
+  corroborates [[watch-always-loaded-weight]]. Provenance: user statement.
