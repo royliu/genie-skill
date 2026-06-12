@@ -266,6 +266,35 @@ curated ≤50/namespace store). Provenance: user statement.
   Target metric: planning tokens + escalations on the next
   template-matched run; efficacy: pending. Provenance: user statement.
 
+## 2026-06-12 — v3.1.0: ambient mode — passive distill from host sessions (user-directed)
+
+- User directive: make genie ambiently self-improve the host (OpenClaw)
+  the way hermes does. This is the documented re-add trigger firing for
+  the dream subsystem deleted in v2.0.0 ("re-derivable by the same
+  evidence process when its trigger first actually occurs") — re-added
+  in scoped form: a bounded distill pass, not the full dreams machinery.
+- **New `ambient` mode** (references/ambient.md): host heartbeat/cron
+  fires `genie ambient`; the pass scans NEW host-session transcript
+  content since a watermark, detects hermes-taxonomy signals (repeated
+  workflow, correction, stated preference, hard-won fact, ≥5-tool-call
+  success), and persists through the existing memory/template lifecycle.
+  Closes the one structural gap vs hermes (invocation-gated vs ambient
+  learning) while keeping the gates hermes lacks: trust boundary at
+  distill (third-party transcript content NEVER distills — standing
+  prompt-injection defense), tentative→standing two-confirmation,
+  user-gated skill publication.
+- **Cost discipline (KPI-compliant)**: ≤10k tokens/pass hard cap, <1k
+  silent pass when nothing is new, no agents, no web, read+distill only,
+  concurrency lock. Silent unless something was learned (one-line report
+  with the "forget that" veto). Every pass appends a `mode: "ambient"`
+  ledger line.
+- porting.md gains the wiring: OpenClaw transcript paths + cron/
+  HEARTBEAT.md recipes; Claude Code via /loop or /schedule.
+- Target metrics: ≥1 memory or template per week distilled from
+  NON-genie sessions (the loop is live); first triage hit on an
+  ambiently-learned template (the loop pays); ambient pass cost within
+  caps on the ledger. Efficacy: pending. Provenance: user statement.
+
 ## 2026-06-12 — v3.0.0: autonomous self-improvement, KPI declaration, autopilot default (user-directed)
 
 - User directive: "make genie improve faster and autonomously; speed and

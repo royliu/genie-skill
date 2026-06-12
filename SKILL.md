@@ -225,6 +225,16 @@ Identify load-bearing claims, attack with sourced counter-evidence,
 spot-check citations, stress invalidations, per-claim verdicts. The
 cheapest genie-grade rigor: draft natively, audit before you act.
 
+## ambient mode
+
+`ambient`: passive distill from HOST sessions since the last pass — the
+hermes-parity loop. No run, no agents, ≤10k tokens, silent when nothing
+learned. Detects repeated workflows, corrections, stated preferences,
+and hard-won facts in new transcript content; persists through the
+standard memory/template lifecycle (trust boundary applies: third-party
+content never distills). Fire it from a host heartbeat/cron (mappings:
+porting.md); full procedure: references/ambient.md.
+
 ## setup mode
 
 Create `~/.genie/{memory/user,memory/process}` + empty runs.jsonl if

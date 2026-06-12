@@ -25,6 +25,18 @@ mounted writable, secrets absent (physical). Never weaken either.
 supervisor works only there, merge one module at a time after its
 verification passes; a merge conflict is a blocking escalation.
 
+**Ambient mode wiring (ambient.md):** OpenClaw — session transcripts
+live under the agent dir (typically
+`~/.openclaw/agents/<agent>/sessions/*.jsonl`; confirm with
+`openclaw --help` / the agent config); schedule via OpenClaw cron
+(`openclaw cron add` with prompt `genie ambient`, every 6h) or one
+HEARTBEAT.md line ("if >6h since the last `genie ambient` pass, run
+it"). Claude Code — transcripts at
+`~/.claude/projects/<project-dir>/*.jsonl`; schedule via the /loop or
+/schedule skill. Hosts without cron: run `genie ambient` manually at
+session end. The pass reads transcripts and writes only `~/.genie/` —
+grant nothing else.
+
 **Reliability:** host agent-tracking is the least reliable layer
 everywhere. Heartbeat/result files + the watchdog (SKILL.md) are the
 defense; any process that can read the run dir can answer "status".
