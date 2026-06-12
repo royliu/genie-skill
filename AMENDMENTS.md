@@ -265,3 +265,11 @@ curated ≤50/namespace store). Provenance: user statement.
   after SkillOpt-Sleep and Claude Dreaming — trigger still unfired).
   Target metric: planning tokens + escalations on the next
   template-matched run; efficacy: pending. Provenance: user statement.
+
+## 2026-06-12 — v2.1.1: experience-search trust boundary (self-caught)
+
+- v2.1.0's experience search allowed grepping run REPORTS, which contain
+  synthesized third-party content — a provenance-boundary bypass.
+  Restricted to orchestrator-authored artifacts only (plan.md,
+  state.json decisions). Caught in the hermes-comparison review, one day
+  after introduction. Provenance: retro-analysis.
