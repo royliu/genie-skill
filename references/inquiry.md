@@ -22,6 +22,26 @@ fresh agent whose only job is to attack the emerging conclusions. Lite
 mode applies as usual: small inquiry = one researcher + one refuting
 verifier.
 
+## Load-bearing claims first (stakes-weighted verification)
+
+The draft must END with an enumerated **load-bearing claims** list — the
+specific claims the recommendation's money/decision actually rests on
+(typically 3-6). Full provenance ceremony (>=2 independent sources,
+confidence labels, freshness) applies to THOSE; supporting context gets
+one source and a spot-check. The red-team attacks the load-bearing list
+hard and samples the rest. Uniform rigor is the cost bug: verification
+effort follows the money, not the word count (run-5 evidence: 55% of run
+cost was undirected attack surface).
+
+## Progressive delivery
+
+Deliver the draft to the user the moment research verification passes -
+do not hold it for the red-team. Dispatch the red-team CONCURRENTLY
+(it starts on evidence the instant the file exists), and deliver its
+verdict + amended recommendation as a follow-up. The user reads at
+native speed; the safety net closes behind them. Label the draft
+clearly: "unverified draft - red-team verdict follows."
+
 ## Acceptance criteria: provenance, not truth
 
 A verifier cannot check "the analysis is correct." It can check:

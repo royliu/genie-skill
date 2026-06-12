@@ -182,3 +182,21 @@ curated ≤50/namespace store). Provenance: user statement.
   `~/.genie/venv` so runs stop re-installing pytest. Honest note: this
   approaches the floor — remaining cost is the guarantees themselves.
   Provenance: user statement.
+
+## 2026-06-12 — v1.14.0: stakes-weighted inquiry + audit mode (user-directed)
+
+- User: run-5 inquiry at 3.8x tokens / ~6x wall is unacceptable. Ledger
+  root cause: UNIFORM RIGOR — red-team (64.6k, 55% of run) attacked all
+  claims equally; provenance ceremony applied to every claim. Changes
+  (target metrics: next inquiry run `tokens` <=2.4x native, draft
+  delivered at native-comparable wall time; efficacy: pending):
+  (1) load-bearing-claims enumeration — full ceremony + hard attack on
+  the 3-6 claims the money rests on, spot-checks elsewhere;
+  (2) progressive delivery — draft ships when research verifies, red-team
+  runs concurrently, verdict lands as addendum;
+  (3) new `audit` mode — red-team any existing analysis standalone
+  (~30k): pay for verification only when about to act. Run-5 evidence
+  that the attack is where inquiry value concentrates: it refuted the
+  $52k anchor that the native arm shipped as its highest-conviction zone.
+  Source memory: [[inquiry-agents-cost-more]]. Provenance: user statement
+  + retro-analysis.

@@ -264,6 +264,15 @@ touch last-dream, unlock. Scheduled triggers gate on
 `scripts/dream-guard.sh` (token-free). Runs outrank dreams — yield
 immediately. Notify only if a proposal was filed.
 
+**`audit <file|claim|analysis>`**: red-team an EXISTING analysis without
+redoing its research — genie's verification decoupled from genie's
+ceremony (~30k, one fresh adversarial agent). Identify the load-bearing
+claims, attack those with sourced counter-evidence, spot-check citations,
+stress invalidation/fit, deliver per-claim verdicts + amendments. Works
+on native output, an analyst's note, anything. Quote + concurrence gate
+apply as usual. This is the cheapest path to genie-grade rigor: draft
+natively, audit before you act on it.
+
 **`know <topic>`**: pure read, no agents, no cost. Recall as in Phase 0,
 then two tiers: **what I know** (composed prose citing memory ids +
 ledger lines, status/provenance noted) and **what I don't know** (gaps,
