@@ -143,3 +143,19 @@ curated ≤50/namespace store). Provenance: user statement.
   session, including once when conversational momentum assumed results
   existed. Behavioral validation; `efficacy: pending` formally, working
   observably.
+
+## 2026-06-11 — sequential-chain continuation + tiering teeth (user-directed)
+
+- User: run-4 full mode at 2.3x native is too expensive. Root cause from
+  the ledger: context duplication across sequential agents (cli-docs 47k
+  re-learned what api-core knew; one module ~= one whole native run).
+  Changes (target metric: `tokens` on the next sequential full run,
+  expect ~1.4-1.5x native; efficacy: pending):
+  (1) Dispatch rule: agent count = parallel tracks — sequential chains
+  share one continued supervisor with verification gates between modules;
+  (2) contract: command-shaped criteria self-checked ONCE (orchestrator
+  re-runs them anyway — double verification was paid at agent prices);
+  (3) model tiering hardened from optional to default-with-logged-
+  deviation (run 4's orchestrator skipped it; rule lacked teeth).
+  Source memory: [[sequential-chains-one-agent]]. Provenance: user
+  statement + retro-analysis.

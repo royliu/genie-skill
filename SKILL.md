@@ -116,15 +116,22 @@ runs"). Per-run overrides always win.
 
 Repeat until all modules `done` or user-blocked:
 
-1. **Dispatch** every dep-satisfied module: Agent tool
-   (`subagent_type: general-purpose`), independent modules in parallel in
-   ONE message, `run_in_background: true` when >1, `isolation: "worktree"`
+1. **Dispatch.** Agent count = PARALLEL TRACKS, not module count: a
+   sequential dependency chain shares ONE supervisor, continued across
+   its modules after each verification gate (continuation message, or
+   respawn carrying the verified contract if the host can't continue) —
+   a fresh agent costs ~30k re-learning what the last one knew
+   (benchmarked: a 2nd sequential agent cost ≈ an entire native run).
+   Spawn separate supervisors only for genuinely concurrent modules:
+   Agent tool (`subagent_type: general-purpose`), parallel in ONE
+   message, `run_in_background: true` when >1, `isolation: "worktree"`
    for overlapping file writes (no native worktrees → git recipe in
    porting.md). Respect budget: ≤ `max_parallel_supervisors` at once;
    would exceed `max_total_agents`/cost ceiling → pause and escalate.
    Deadline set → at ~70% elapsed descope nice-to-haves (log + notify),
-   at 100% stop and salvage. Tier models: docs/config/checklist work →
-   cheaper model; code + adversarial verification → default. Prompt =
+   at 100% stop and salvage. Model tiering is the DEFAULT, not optional:
+   docs/config/checklist work → cheaper model; code + adversarial
+   verification → default model; deviation logged as a decision. Prompt =
    intent ¶ + module goal/criteria/open questions + relevant decisions +
    **literal result JSON shape** (state: `met` is boolean, no extra
    top-level fields — field lists alone drift) + a **context pack** (exact
@@ -178,7 +185,10 @@ Repeat until all modules `done` or user-blocked:
 > acceptance criteria → fix, up to 5 iterations, updating your status file
 > each iteration ({"iteration": N, "phase": "...", "note": "..."}).
 > Implementation-level decisions are yours; record each in your final
-> report. NEVER guess on anything contradicting the stated intent,
+> report. Command-shaped criteria: self-check each ONCE — the
+> orchestrator independently re-runs them all, so repeated self-check
+> passes are wasted spend. NEVER guess on anything contradicting the
+> stated intent,
 > requiring credentials/secrets, destructive or hard to reverse, or
 > scope-changing — escalate instead. An escalation has exactly: id,
 > module, type (question|blocker|suggestion), blocking (boolean),
