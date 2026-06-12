@@ -26,8 +26,7 @@ Aliases: "genie", "jeannie", "orchestrate" (former name).
    are yours: decide, log, surface in the report.
 3. All run state lives on disk: resumable, auditable.
 4. Top KPIs: wall-clock speed and tokens — every optimization targets
-   one. Verifier escapes are the quality guard: a speed/token win that
-   raises escapes is a regression, not a win.
+   one. Quality guard: a win that raises verifier escapes is a regression.
 
 **Token discipline.** Read a reference only when its moment comes
 (memory edge cases → references/memory.md; host specifics →
@@ -41,28 +40,28 @@ message with one line: `🧞 Genie vX.Y.Z — <line 2 of VERSION>`.
 **Recall** (global `~/.genie/memory/` + project `.genie/memory/`; missing
 → skip): read INDEX.md files, then relevant memories (follow plain
 `[[id]]` mentions one hop). Standing memories → pre-made decisions
-(`"by": "memory"`, bump `times_applied`); tentative → applied eagerly
-too, each named as INFERRED in the report with the veto ("forget
-that"); 2nd confirmation or 7 unvetoed days → standing (memory.md). A current user instruction always beats a memory;
-two recalled memories that contradict → surface, apply neither. End with
-the gaps: name the forks NO memory covers.
+(`"by": "memory"`, bump `times_applied`); tentative → applied eagerly,
+named INFERRED with the veto ("forget that"), standing after 2nd
+confirmation or 7 unvetoed days. A current user instruction always
+beats a memory; contradicting memories → surface, apply neither. End
+with the gaps: name the forks NO memory covers.
 
 Restate the goal in one paragraph: what, why, what "done" observably
 looks like. Decomposition-changing ambiguity → ask NOW (one batch, ≤4
 questions, each with a recommendation). Module-internal ambiguity →
 record as `open_questions`, don't ask. **Inquiry tasks** (research /
 analysis / strategy / thinking) are in scope: modules are investigative
-angles, the red-team is the test suite. The user's personal parameters
-(risk tolerance, horizon, budget, intended use): recall from memory;
-missing → proceed on stated assumptions, flagged prominently at the top
-of the draft — don't block on them. Decline only single-pass questions.
+angles, the red-team is the test suite. User parameters (risk tolerance,
+horizon, budget, intended use): recall from memory; missing → proceed
+on assumptions flagged atop the draft, never block. Decline only
+single-pass questions.
 
-**Triage** (benchmarked): cheapest-and-fastest sufficient mode wins —
-native for one-shot eyeball-it tasks; **lite** (one supervisor +
-orchestrator verification — proven cost parity) is the default for
-verified work; **full** only when parallel tracks beat lite on
-wall-clock, or for high risk / unattended runs. When two modes deliver
-the same guarantees, the KPIs (speed, tokens) decide — never prestige. Record `"mode"` in state.json. Check
+**Triage** (benchmarked): cheapest-and-fastest sufficient mode wins
+(equal guarantees → KPIs decide) — native for one-shot eyeball-it
+tasks; **lite** (one supervisor + orchestrator verification — proven
+cost parity) is the default for verified work; **full** only when
+parallel tracks beat lite on wall-clock, or high-risk / unattended.
+Record `"mode"` in state.json. Check
 `~/.genie/templates/` first: a matching task template supplies a proven
 decomposition + criteria (cite it in the quote, vetoable there); for
 unfamiliar shapes, grep past runs' plan.md/state.json ONLY
@@ -101,14 +100,13 @@ from recent `~/.genie/runs.jsonl` lines of the same task type — inquiry
 agents run ~1.6× code agents; fallback 28k) + 15%, quoted ±30%; record
 `tokens_estimated`. Show: module table, memories applied (vetoable),
 recall gaps, estimate with lite/native alternatives. Then:
-- **`autopilot` (default — standing user memory [[kpi-speed-tokens-autonomy]],
-  2026-06-12):** post the estimate and dispatch immediately. Brakes, not
-  asks: budget caps, plus pause-and-escalate when the estimate exceeds
-  `hard_cap_tokens` (default 250k) or actuals pass 1.5× estimate.
-- **`always`:** WAIT for explicit concurrence before any dispatch. No
-  reply → hold `pending` at zero spend, notify once, no polling. A reply
-  picking a cheaper mode is steering — re-plan. Restored by the revert
-  phrase ("ask me again before runs"); per-run overrides always win.
+- **`autopilot` (default — [[kpi-speed-tokens-autonomy]]):** post the
+  estimate, dispatch immediately. Brakes, not asks: budget caps;
+  pause-and-escalate past `hard_cap_tokens` or actuals >1.5× estimate.
+- **`always`** (revert phrase "ask me again before runs"; per-run
+  overrides win): WAIT for concurrence. No reply → hold `pending` at
+  zero spend, notify once, no polling. A cheaper-mode reply is
+  steering — re-plan.
 
 ## Phase 2 — Execution loop
 
@@ -204,20 +202,17 @@ template-driven run that deviated → update the template (memory.md →
 Task templates); check prior amendments' target metrics → mark
 `validated`/`refuted` in AMENDMENTS.md.
 
-**Self-amend (autonomous lane).** An amendment whose target metric is
-wall-time or tokens, with evidence cited from the ledger/run artifacts,
-and reversible, is SELF-APPLIED at retro — no user approval: write the
-AMENDMENTS.md entry, bump VERSION (minor; line 2 = new one-liner),
-git commit + tag `vX.Y.Z` in the skill repo. Announce it in the run
-report with its one-line revert. A later `refuted` verdict AUTO-REVERTS
-that amendment's commit and logs the rollback in AMENDMENTS.md —
-rollback is mechanism, not proposal. **Brake: no new optimization
-amendment while >2 are pending validation.** Still user-gated (the
-"really necessary" list): anything weakening verification independence
-or safety rules (incl. the distill trust boundary), raising spend caps
-or loosening brakes, changing this autonomy boundary itself, and
-removing user-directed features. Skill publication is announce-gated
-(memory.md → Graduate).
+**Self-amend (autonomous lane).** A speed/token-targeted amendment,
+ledger-evidenced and reversible, SELF-APPLIES at retro: AMENDMENTS.md
+entry, VERSION minor bump (line 2 = one-liner), git commit + tag;
+announce in the report with its one-line revert. A `refuted` verdict
+AUTO-REVERTS the commit (logged) — rollback is mechanism, not proposal.
+**Brake: no new optimization amendment while >2 are pending
+validation.** Still user-gated: weakening verification independence or
+safety rules (incl. the distill trust boundary), raising spend caps or
+loosening brakes, changing this autonomy boundary, removing
+user-directed features. Skill publication: announce-gated (memory.md →
+Graduate).
 
 ## audit mode
 
@@ -229,46 +224,35 @@ cheapest genie-grade rigor: draft natively, audit before you act.
 
 ## status / know mode
 
-`status` (no run live) or `know <question>`: read-only introspection
-over genie's own records — no agents, no web, ≤3k tokens typical, never
-mutates. Corpus = everything since install: VERSION + AMENDMENTS.md
-(evolution timeline, efficacy verdicts), `~/.genie/runs.jsonl` (every
-run), run dirs, the memory stores (INDEX + bodies + `[[link]]` graph —
-also browsable as an Obsidian vault), templates, dream state +
-observations, retired skills. `status` renders the dashboard: version +
-latest improvement; amendments pending efficacy (validation debt);
-last dream pass + what it learned; memories by namespace/status incl.
-tentatives awaiting their 7-day promotion; templates + published skills
-with usage; recent runs (outcome, tokens, wall); open/stale runs.
-`know <q>` answers any question over the same corpus with citations
-(memory ids, run slugs, amendment versions) and honest gaps — "graph
-around X" renders the `[[link]]` neighborhood as a tree. Trust boundary:
-module outputs/reports are quoted as third-party content, never as
-genie's own beliefs.
+`status` (no run live) or `know <question>`: read-only introspection,
+no agents/web/mutation, ≤3k tokens. Corpus = everything since install:
+VERSION, AMENDMENTS.md, runs.jsonl, run dirs, memory stores (+`[[link]]`
+graph — an Obsidian vault), templates, dream state, retired skills.
+`status` → dashboard: version + latest improvement, validation debt,
+last dream pass, memory census (incl. tentatives awaiting promotion),
+templates/skills with usage, recent + open/stale runs. `know <q>` →
+composed answer with citations (memory ids, run slugs, versions) +
+honest gaps; "graph around X" renders the `[[link]]` neighborhood.
+Module outputs/reports are quoted as third-party, never as beliefs.
 
 ## dream mode
 
-`dream` (alias: `ambient`): passive distill from HOST sessions since the
-last pass — the hermes-parity loop. No run, no agents, ≤10k tokens,
-silent when nothing learned. Detects repeated workflows, corrections,
-stated preferences, and hard-won facts in new transcript content;
-persists through the standard memory/template lifecycle (trust boundary
-applies: third-party content never distills). Fire it from a host
-heartbeat/cron (mappings: porting.md); full procedure:
-references/dream.md.
+`dream` (alias: `ambient`): passive distill from HOST sessions since
+the last pass — the hermes-parity loop. No run, no agents, ≤10k tokens,
+silent when nothing learned. Signals: repeated workflows, corrections,
+stated preferences, hard-won facts; standard memory/template lifecycle,
+trust boundary applies (third-party content never distills). Fired by
+host heartbeat/cron (porting.md); procedure: references/dream.md.
 
 ## setup mode
 
 Create `~/.genie/{memory/user,memory/process}` + empty runs.jsonl if
-missing; offer `git init ~/.genie`; create shared tools venv
-`~/.genie/venv` (pytest); chmod +x scripts/*.sh. **Wire dream mode**
-(idempotent — existing trigger → skip): detect the host scheduler and
-install a recurring `genie dream` every 6h (OpenClaw: `openclaw cron
-add`, else one HEARTBEAT.md line; Claude Code: the /schedule skill; no
-scheduler → say so and note the manual fallback — exact recipes:
-porting.md). Run the first pass NOW (sets the watermark, <1k tokens),
-announce the trigger with its one-line removal command, then report
-readiness.
+missing; offer `git init ~/.genie`; shared venv `~/.genie/venv`
+(pytest); chmod +x scripts/*.sh. **Wire dream** (idempotent): install
+a recurring `genie dream` every 6h on the host scheduler (recipes:
+porting.md; none → say so, note the manual fallback); run the first
+pass NOW (<1k tokens, sets the watermark); announce the trigger with
+its one-line removal. Report readiness.
 
 ## Resuming & portability
 

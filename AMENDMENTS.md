@@ -266,6 +266,29 @@ curated ≤50/namespace store). Provenance: user statement.
   Target metric: planning tokens + escalations on the next
   template-matched run; efficacy: pending. Provenance: user statement.
 
+## 2026-06-12 — v3.6.0: token optimization — v3.x weight compression (user-directed)
+
+- Measured regression: SKILL.md 12,084 → 15,618 bytes (+29%) across the
+  v3.0–v3.5 amendments — the v1.x always-loaded-weight lesson
+  ([[watch-always-loaded-weight]]) re-violated by feature growth.
+  SKILL.md rides every turn of every run; +3.5KB ≈ +900 tokens/turn.
+- Compression pass over the v3.x additions only, zero rules removed
+  (same discipline as the v1.x pass): prime directive 4, eager-belief
+  recall, inquiry parameters, triage, autopilot/always bullets,
+  self-amend block, status/know, dream, setup sections. Result:
+  15,618 → 14,403 bytes (−7.8%, ~−300 tokens/turn). Residual +19% over
+  v2.1.1 is the six features themselves, now at core density.
+- Target metric: always-loaded protocol mass — deterministic, measured
+  at apply: **efficacy: validated** (byte count above). Adds no
+  validation debt. Brake check (honest note): >2 amendments are
+  efficacy-pending, but all are user-directed FEATURE amendments; the
+  brake governs autonomous optimization shipping ahead of validation,
+  and this amendment is user-directed with an at-apply-measurable
+  metric. Watch item for retros: the feature↔compression cycle should
+  not become a ratchet — next review, check whether any v3.x feature's
+  SKILL.md section can move behind a reference read entirely.
+- Provenance: user statement.
+
 ## 2026-06-12 — v3.5.0: status / know mode — full introspection (user-directed)
 
 - User asked whether genie's status, memory, knowledge, and knowledge
