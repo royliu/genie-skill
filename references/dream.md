@@ -60,8 +60,10 @@ history.)
 - **Budget: ≤10k tokens per pass** (target <1k when nothing is new — the
   watermark check is the whole cost). Cap hit → stop, advance the
   watermark only past content actually processed.
-- **Skill publication stays user-gated** (v3.0.0 list): a dream may
-  PROPOSE template graduation in its report, never perform it.
+- **Skill publication is announce-gated** (v3.4.0): a dream may publish
+  a graduated template itself (memory.md rules: standing + ≥2 verified
+  wins, ≤300-char description, 30-day zero-use auto-retire) — always
+  announced with its one-line removal command, never silent.
 - **Frequency** is host-configured; every 4–12h or a session-end hook is
   the sweet spot. More often buys nothing — signals need sessions to
   accumulate.

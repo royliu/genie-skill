@@ -19,11 +19,16 @@ Related: [[other-id]] (optional plain mentions; a contradiction between
 recalled memories is surfaced to the user, never silently resolved)
 ```
 
-**Status:** `tentative` = seen once → may only seed escalation
-recommendations. `standing` = confirmed on a second run or stated by the
-user as a general rule → applied as a pre-made decision, logged
-`"by": "memory"` with the id, vetoable at the quote. A veto is a signal:
-update or delete the memory.
+**Status:** `tentative` = seen once → applied EAGERLY as an inferred
+decision (eager belief, v3.4.0): acted on immediately, but every
+application is NAMED in the report as inferred, with the standing veto
+("forget that"). Promotes to `standing` on a 2nd confirmation OR 7 days
+unvetoed, whichever comes first. `standing` = confirmed, or stated by
+the user as a general rule → applied as a pre-made decision, logged
+`"by": "memory"` with the id, vetoable at the quote. A veto is a
+signal: update or delete the memory; a vetoed tentative is deleted, and
+a high veto rate on eager applications is retro evidence against eager
+belief itself.
 
 **Distill (every run)** — qualifies: user answers revealing standing
 preferences; repeat orchestrator decisions; expensive-to-rediscover
@@ -84,10 +89,15 @@ Rules (mirror the memory lifecycle):
 - **Self-improve**: deviations during a template-driven run (changed
   criteria, adjusted decomposition) update the template via the standard
   consolidate pass — never blind-append.
-- **Graduate**: a standing template with repeated wins may be proposed as
-  a standalone skill (a real SKILL.md) — user-approved, via Skill
-  Workshop on OpenClaw. That is how genie GENERATES new skills from
-  experience; generation is autonomous, publication is gated.
+- **Graduate**: a standing template with ≥2 verified wins is PUBLISHED
+  autonomously as a standalone skill (a real SKILL.md; Skill Workshop on
+  OpenClaw) — announce-gated, not ask-gated (v3.4.0): publication is
+  announced with its one-line removal command, never silent. Brakes:
+  description ≤300 chars ([[watch-always-loaded-weight]] — it rides
+  every host prompt); a published skill with zero uses in 30 days is
+  auto-retired (announced; archived to `~/.genie/retired/`, restorable).
+  That is how genie GENERATES new skills from experience — hermes-grade
+  prolific, with receipts and retirement hermes lacks.
 - Templates obey the trust boundary: distilled only from this agent's own
   runs, never from third-party content.
 

@@ -266,6 +266,37 @@ curated ≤50/namespace store). Provenance: user statement.
   Target metric: planning tokens + escalations on the next
   template-matched run; efficacy: pending. Provenance: user statement.
 
+## 2026-06-12 — v3.4.0: eager belief + announce-gated skill publication (user-directed)
+
+- User directive: close the remaining prolific-ness gap vs hermes —
+  "make all the can:yes / should:yes changes." Two gates converted from
+  wait/ask to act/announce; the distill trust boundary explicitly KEPT
+  (the should:no item — hermes-style wholesale transcript distillation
+  is a prompt-injection vulnerability, not a capability; it is now
+  named on the user-gated list to prevent autonomous weakening).
+- **Eager belief**: tentative (inferred) memories apply immediately
+  instead of seeding recommendations only; every eager application is
+  named as INFERRED in the report with the "forget that" veto; promote
+  to standing on 2nd confirmation OR 7 unvetoed days. Explicit user
+  statements were already immediate-standing — this extends immediacy
+  to inferences while keeping them loud until proven. Quality guard:
+  veto rate on eager applications; high rate = retro evidence to refute
+  eager belief itself.
+- **Skill publication announce-gated**: a standing template with ≥2
+  verified wins publishes autonomously (dream or retro may perform it) —
+  announced with a one-line removal command, never silent. Brakes
+  replace the ask: description ≤300 chars (always-loaded weight), 30-day
+  zero-use auto-retire to `~/.genie/retired/` (restorable). Removed
+  "publishing templates as skills" from the v3.0.0 user-gated list;
+  added the trust boundary to it explicitly.
+- Result: trigger surface, immediacy, and autonomous output now match
+  hermes; the deliberate residual is third-party content never distills
+  without user confirmation. Target metrics: time-to-standing for
+  inferred lessons ≤7 days (was: 2nd run, unbounded); ≥1 autonomous
+  publication when a template qualifies; veto rate on eager
+  applications <~20%; zero unremoved skills after a veto. Efficacy:
+  pending. Provenance: user statement.
+
 ## 2026-06-12 — v3.3.0: ambient renamed `dream` (user decision)
 
 - Rename only, zero behavior change: mode invocation `genie dream`,

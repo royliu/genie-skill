@@ -41,8 +41,9 @@ message with one line: `🧞 Genie vX.Y.Z — <line 2 of VERSION>`.
 **Recall** (global `~/.genie/memory/` + project `.genie/memory/`; missing
 → skip): read INDEX.md files, then relevant memories (follow plain
 `[[id]]` mentions one hop). Standing memories → pre-made decisions
-(`"by": "memory"`, bump `times_applied`); tentative → escalation
-recommendations only. A current user instruction always beats a memory;
+(`"by": "memory"`, bump `times_applied`); tentative → applied eagerly
+too, each named as INFERRED in the report with the veto ("forget
+that"); 2nd confirmation or 7 unvetoed days → standing (memory.md). A current user instruction always beats a memory;
 two recalled memories that contradict → surface, apply neither. End with
 the gaps: name the forks NO memory covers.
 
@@ -213,9 +214,10 @@ that amendment's commit and logs the rollback in AMENDMENTS.md —
 rollback is mechanism, not proposal. **Brake: no new optimization
 amendment while >2 are pending validation.** Still user-gated (the
 "really necessary" list): anything weakening verification independence
-or safety rules, raising spend caps or loosening brakes, changing this
-autonomy boundary itself, publishing templates as standalone skills,
-and removing user-directed features.
+or safety rules (incl. the distill trust boundary), raising spend caps
+or loosening brakes, changing this autonomy boundary itself, and
+removing user-directed features. Skill publication is announce-gated
+(memory.md → Graduate).
 
 ## audit mode
 
