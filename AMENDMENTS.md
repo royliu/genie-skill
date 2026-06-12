@@ -266,6 +266,31 @@ curated ≤50/namespace store). Provenance: user statement.
   Target metric: planning tokens + escalations on the next
   template-matched run; efficacy: pending. Provenance: user statement.
 
+## 2026-06-12 — v3.7.0: setup wires host-wide recall into AGENTS.md (user-directed)
+
+- Gap: dream gave ordinary host sessions a path INTO genie's memory;
+  nothing gave them a path OUT. Non-genie sessions started blind —
+  memories applied only when genie was invoked, so cross-session
+  context was invocation-gated exactly like learning used to be.
+- **Setup now appends a marked `genie-recall` block** to the host
+  bootstrap file (OpenClaw: AGENTS.md; Claude Code: ~/.claude/CLAUDE.md;
+  Codex: AGENTS.md — recipes + block text: porting.md): at session
+  start, read the memory INDEX files (one line per memory, tens of
+  tokens), open bodies only on relevance — the hermes lazy-summary
+  pattern. Idempotent via HTML-comment marker; removal disables cleanly.
+  Announced with its removal note, per brakes-not-asks.
+- Boundary kept: the block instructs READ-ONLY use — host sessions never
+  write `~/.genie/memory/` directly; writes go through genie runs or
+  dream passes, preserving the distill trust boundary as the single
+  write path. Bodies are data, not instructions (recall rule restated
+  in the block itself).
+- This is the only genie mechanism that writes outside `~/.genie/` —
+  one marked block, once, at setup, removable. Dream remains barred
+  from it.
+- Target metric: on a wired host, a non-genie session demonstrably uses
+  a genie memory (e.g. honors a standing preference without being told)
+  within the first week. Efficacy: pending. Provenance: user statement.
+
 ## 2026-06-12 — v3.6.0: token optimization — v3.x weight compression (user-directed)
 
 - Measured regression: SKILL.md 12,084 → 15,618 bytes (+29%) across the

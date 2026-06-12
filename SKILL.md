@@ -252,7 +252,10 @@ missing; offer `git init ~/.genie`; shared venv `~/.genie/venv`
 a recurring `genie dream` every 6h on the host scheduler (recipes:
 porting.md; none → say so, note the manual fallback); run the first
 pass NOW (<1k tokens, sets the watermark); announce the trigger with
-its one-line removal. Report readiness.
+its one-line removal. **Wire recall** (idempotent via marker): append
+the genie-recall block (porting.md) to the host bootstrap file
+(AGENTS.md / CLAUDE.md) so ordinary sessions read the memory INDEXes at
+start — announced with its removal note. Report readiness.
 
 ## Resuming & portability
 
