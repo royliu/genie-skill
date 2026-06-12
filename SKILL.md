@@ -34,6 +34,11 @@ allowed is: read memory INDEXes + relevant memories, a quick project
 listing, write plan.md/state.json. No agents, no web, no sweeps —
 startup must stay nearly free.
 
+**Announce the version.** On every invocation, read `VERSION` (line 1:
+semver; line 2: latest-improvement one-liner) and open your first message
+with: `🧞 Genie vX.Y.Z — latest self-improvement: <line 2>`. The
+self-improvement loop stays visible to the user, run by run.
+
 ## Phase 0 — Intent
 
 **Recall memory** (global `~/.genie/memory/` + project `.genie/memory/`;

@@ -159,3 +159,14 @@ curated ≤50/namespace store). Provenance: user statement.
   deviation (run 4's orchestrator skipped it; rule lacked teeth).
   Source memory: [[sequential-chains-one-agent]]. Provenance: user
   statement + retro-analysis.
+
+## 2026-06-11 — v1.12.0: version discipline + startup announcement (user-directed)
+
+- **VERSION file** (semver + latest-improvement one-liner): minor bump per
+  applied amendment, patch for efficacy/doc updates — the version number
+  is the public self-improvement counter. Retroactive count: v1.0.0 =
+  initial publication; 12 minors = the evolution events logged above.
+- **Startup announcement**: every invocation opens with
+  "🧞 Genie vX.Y.Z — latest self-improvement: <one-liner>" (one tiny file
+  read; token-discipline compliant). Self-improvement stays visible to
+  the user instead of buried in the changelog. Provenance: user statement.

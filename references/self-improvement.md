@@ -83,7 +83,10 @@ supervisors"), the harness may propose editing its own files:
    property, not a formality.
 3. On approval: apply the edit and log it in `AMENDMENTS.md` at the skill
    root (create on first use): date, what changed, source memory id,
-   evidence runs, target metric, and `efficacy: pending`.
+   evidence runs, target metric, and `efficacy: pending`. **Bump
+   `VERSION`**: minor for an applied amendment (rewrite line 2 to the new
+   one-liner), patch for efficacy-status updates and doc-only changes.
+   The version number IS the public self-improvement counter.
    On rejection: log the proposal + the user's reason in
    `~/.genie/dreams/rejected.md` (the rejected-edit buffer).
 4. The amended rule now supersedes the memory — delete the memory (note
