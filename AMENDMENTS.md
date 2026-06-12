@@ -246,3 +246,22 @@ curated ≤50/namespace store). Provenance: user statement.
   before verdict, both runs).
 - Memory [[inquiry-agents-cost-more]] promoted to STANDING (2nd
   confirmation: 56.5k/agent).
+
+## 2026-06-12 — v2.1.0: procedural memory / task templates (user-directed; ideas imported from NousResearch/hermes-agent)
+
+- Hermes' core idea adopted with genie gates: experience is generative —
+  completed task patterns become reusable procedure. Templates
+  (~/.genie/templates/) hold proven decomposition + criteria + pre-made
+  decisions; the retro distills one when a run shape repeats (2nd
+  occurrence); triage auto-applies matches (cited in the quote,
+  vetoable); deviations update the template; standing templates may
+  GRADUATE to standalone skills — user-approved, Skill Workshop on
+  OpenClaw. Generation autonomous, publication gated. Plus experience
+  search: run dirs are the corpus, grep past plans for similar intents.
+  Evidence: runs 1–3 were the same shape, re-planned from scratch 3x —
+  first template (small-python-cli) seeded standing from them.
+  NOT adopted: hermes' ungated autonomous skill creation; Honcho user
+  modeling; periodic nudges (= dreams; convergence noted — 3rd sibling
+  after SkillOpt-Sleep and Claude Dreaming — trigger still unfired).
+  Target metric: planning tokens + escalations on the next
+  template-matched run; efficacy: pending. Provenance: user statement.

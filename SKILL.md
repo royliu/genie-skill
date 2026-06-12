@@ -54,7 +54,11 @@ questions.
 **Triage** (benchmarked): native for one-shot eyeball-it tasks; **lite**
 (one supervisor + orchestrator verification — proven cost parity) for
 small verified work; **full** only for genuinely parallel modules, high
-risk, or unattended runs. Record `"mode"` in state.json.
+risk, or unattended runs. Record `"mode"` in state.json. Check
+`~/.genie/templates/` first: a matching task template supplies a proven
+decomposition + criteria (cite it in the quote, vetoable there); for
+unfamiliar shapes, grep past runs' plan.md — the run dirs are the
+experience corpus (protocol: memory.md → Task templates).
 
 ## Phase 1 — Decompose, lock, quote
 
@@ -184,7 +188,9 @@ process feedback → consolidate (add/update/delete, never blind-append);
 list what was remembered. When a store exceeds ~20 memories or a
 contradiction appears, do a full consolidation pass. **Retro:** append
 the ledger line (incl. `tokens` + `tokens_estimated`); note estimate
-accuracy, criteria quality, anything memory-worthy; check prior
+accuracy, criteria quality, anything memory-worthy; a run shape seen for
+the 2nd time → distill a task template, and a template-driven run that
+deviated → update the template (memory.md → Task templates); check prior
 amendments' target metrics → mark `validated`/`refuted` in AMENDMENTS.md
 (refuted → rollback proposal). An amendment proposal needs: evidence,
 a named target metric, explicit user approval, an AMENDMENTS.md entry,

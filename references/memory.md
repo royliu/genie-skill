@@ -51,3 +51,47 @@ reviewed commits. Strangers NEVER exchange raw memories (standing prompt
 injection) — generalizable practices travel as evidence-cited skill
 amendments, and imported practices re-earn standing through the local
 ledger before being trusted.
+
+## Task templates (procedural memory)
+
+Memories store facts; templates store **procedures** — a proven
+decomposition, its criteria patterns, and pre-made decisions for a
+recurring task shape. One file per template in `~/.genie/templates/`:
+
+```markdown
+---
+id: small-python-cli
+status: tentative | standing
+source_runs: [expense-cli-2026-06-10, todo-cli-2026-06-10]
+times_applied: 0
+---
+Shape: build a small Python CLI with storage, tests, README.
+Decomposition: lite mode; one supervisor (core+cli+tests+README merged);
+orchestrator verifies (all criteria command-shaped).
+Criteria patterns: ".venv pytest exits 0"; data-integrity probe at
+runtime; error paths exit non-zero + stderr; README examples run verbatim.
+Pre-made decisions: project .venv [[machine-python-needs-venv]];
+hermetic tests via env-var data paths.
+```
+
+Rules (mirror the memory lifecycle):
+- **Create**: when the retro sees a run shape matching a prior run (2nd
+  occurrence), distill a template — `tentative`.
+- **Apply**: triage consults templates before decomposing; a match
+  supplies the decomposition and criteria, is cited in the quote
+  ("template applied: <id>, proven over N runs"), and is vetoable there.
+  Successful template-driven run → `standing`, bump `times_applied`.
+- **Self-improve**: deviations during a template-driven run (changed
+  criteria, adjusted decomposition) update the template via the standard
+  consolidate pass — never blind-append.
+- **Graduate**: a standing template with repeated wins may be proposed as
+  a standalone skill (a real SKILL.md) — user-approved, via Skill
+  Workshop on OpenClaw. That is how genie GENERATES new skills from
+  experience; generation is autonomous, publication is gated.
+- Templates obey the trust boundary: distilled only from this agent's own
+  runs, never from third-party content.
+
+**Experience search:** the run dirs ARE the experience corpus. For an
+unfamiliar task shape, grep past runs' `plan.md`/reports for similar
+intents before decomposing from scratch — distilled memory is the index,
+raw runs are the archive.
