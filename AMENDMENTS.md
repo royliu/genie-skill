@@ -266,6 +266,21 @@ curated ≤50/namespace store). Provenance: user statement.
   Target metric: planning tokens + escalations on the next
   template-matched run; efficacy: pending. Provenance: user statement.
 
+## 2026-06-12 — v3.3.0: ambient renamed `dream` (user decision)
+
+- Rename only, zero behavior change: mode invocation `genie dream`,
+  reference file references/dream.md, state dir `~/.genie/dream/`
+  (singular — never created under the old name on any host, so no
+  migration; the v2.0.0-deleted subsystem's journals at
+  `~/.genie/dreams/` are untouched history), ledger `mode: "dream"`,
+  run ids `dream-<date-hhmm>`, cron prompt `genie dream`.
+- `ambient` remains a documented alias, same as `orchestrate` after the
+  skill rename. dream.md notes explicitly that this mode INGESTS new
+  memories, unlike the deleted curation-only dream subsystem that
+  shares the name. Prior AMENDMENTS entries (v3.1.0/v3.2.0) left as
+  written — the log is history, not documentation.
+- Provenance: user statement.
+
 ## 2026-06-12 — v3.2.0: ambient wired at setup (user-directed)
 
 - Gap: v3.1.0 defined ambient but left the trigger as a manual install

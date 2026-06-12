@@ -1,2 +1,2 @@
-3.2.0
-latest: setup wires the ambient trigger itself — host cron/heartbeat installed and first pass run at install time, announced with one-line removal
+3.3.0
+latest: ambient mode renamed "dream" — genie dreams over the host's day and wakes up having learned; "ambient" stays as alias
