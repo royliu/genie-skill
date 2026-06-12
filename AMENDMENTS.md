@@ -266,6 +266,32 @@ curated ≤50/namespace store). Provenance: user statement.
   Target metric: planning tokens + escalations on the next
   template-matched run; efficacy: pending. Provenance: user statement.
 
+## 2026-06-12 — v3.5.0: status / know mode — full introspection (user-directed)
+
+- User asked whether genie's status, memory, knowledge, and knowledge
+  graph are checkable across all history since install. The data always
+  was (ledger, AMENDMENTS, provenance-stamped memories, run dirs, the
+  Obsidian-valid vault); the query surface wasn't. This is the v2.0.0-
+  deleted `know` mode's re-add trigger firing — second deleted mechanism
+  re-earned by a real request, after dream. The v2.0.0 rationale
+  ("answering from memory needs no mode") under-counted: a defined
+  dashboard, graph rendering, and citation discipline are more than
+  ad-hoc recall — and v3.4's autonomy raise makes observability the
+  counterweight (genie now believes eagerly and publishes skills alone;
+  the user needs one cheap command to see what it believes and why).
+- **`status`**: read-only dashboard — version, validation debt, last
+  dream pass, memory census (incl. tentatives awaiting 7-day
+  promotion), templates/published skills with usage, recent runs,
+  open/stale runs. **`know <q>`**: composed answer over the full corpus
+  with citations (memory ids, run slugs, amendment versions) + honest
+  gaps; renders `[[link]]` neighborhoods on request. No agents, no web,
+  no mutation, ≤3k tokens typical.
+- Trust boundary honored at read: module outputs/reports quoted as
+  third-party content, never presented as genie's beliefs.
+- Target metrics: any status/know question answered in one invocation,
+  ≤3k tokens, zero agents. Efficacy: pending. Provenance: user
+  statement.
+
 ## 2026-06-12 — v3.4.0: eager belief + announce-gated skill publication (user-directed)
 
 - User directive: close the remaining prolific-ness gap vs hermes —

@@ -227,6 +227,25 @@ Identify load-bearing claims, attack with sourced counter-evidence,
 spot-check citations, stress invalidations, per-claim verdicts. The
 cheapest genie-grade rigor: draft natively, audit before you act.
 
+## status / know mode
+
+`status` (no run live) or `know <question>`: read-only introspection
+over genie's own records — no agents, no web, ≤3k tokens typical, never
+mutates. Corpus = everything since install: VERSION + AMENDMENTS.md
+(evolution timeline, efficacy verdicts), `~/.genie/runs.jsonl` (every
+run), run dirs, the memory stores (INDEX + bodies + `[[link]]` graph —
+also browsable as an Obsidian vault), templates, dream state +
+observations, retired skills. `status` renders the dashboard: version +
+latest improvement; amendments pending efficacy (validation debt);
+last dream pass + what it learned; memories by namespace/status incl.
+tentatives awaiting their 7-day promotion; templates + published skills
+with usage; recent runs (outcome, tokens, wall); open/stale runs.
+`know <q>` answers any question over the same corpus with citations
+(memory ids, run slugs, amendment versions) and honest gaps — "graph
+around X" renders the `[[link]]` neighborhood as a tree. Trust boundary:
+module outputs/reports are quoted as third-party content, never as
+genie's own beliefs.
+
 ## dream mode
 
 `dream` (alias: `ambient`): passive distill from HOST sessions since the
