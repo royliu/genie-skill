@@ -9,7 +9,7 @@ OpenClaw, Codex CLI, or any SKILL.md-compatible agent and it turns that
 agent into a trustworthy employee with a memory: it **quotes the cost
 before working**, decomposes and **independently verifies** everything it
 builds or researches, asks only the questions that are truly yours,
-remembers every lesson in an **inspectable knowledge graph**, improves its
+remembers every lesson in an inspectable plain-files memory store, improves its
 own playbook with your sign-off — and shares what it proves with every
 other agent you run. Smarter on every wish than the last.
 
@@ -61,7 +61,7 @@ The central design primitive is not the agent — it's the **bounded loop**.
 Genie never assumes anything works on the first try; it assumes everything
 converges through iteration, and that every iteration needs two things: a
 **convergence test** (how the loop knows it's done) and a **bound** (what
-stops it from running away). Seven loops, nested like gears at different
+stops it from running away). Six loops, nested like gears at different
 speeds:
 
 | Loop | Cycle time | Converges when | Bounded by |
@@ -69,15 +69,14 @@ speeds:
 | Worker self-check | seconds | own criteria self-pass | 5 internal iterations |
 | Supervisor ↔ verifier | minutes | independent verifier passes | 3 rounds, then escalate |
 | Run execution | hours | all modules verified + integrated | budget, deadline, watchdog |
-| Memory | days | tentative → standing (2-run confirmation) | provenance, quarantine, veto |
-| Dream | daily, idle-time | store consolidated, drift pruned | no new facts, no live writes |
+| Memory | days | tentative → standing (2-run confirmation) | provenance, veto |
 | Amendment | weeks | proposal approved → skill text | 1/run, human gate, safety zones amendment-proof |
 | Network | months | imported practice re-earns standing | local re-validation, Workshop scanning |
 
 Every layer's failure is the next layer's input: a worker's failed
 self-check feeds its next iteration; a failed verification feeds the
 supervisor's next attempt; a run's defects feed the retro; the retro's
-patterns feed dreams; dreamed insights feed amendments; amended skills
+patterns feed amendments; amended skills
 feed the network. Nothing converging? That itself escalates — a loop that
 won't close is treated as information, never as something to brute-force.
 
@@ -100,9 +99,9 @@ have to re-audit yourself. Genie inverts that. The full inventory:
   before delivery.
 - **Inquiry tasks** (research, market analysis, strategy, deep thinking):
   decompose into investigative angles → a red-team module attacks the
-  emerging conclusions → provenance-checked, cited reports with explicit
-  "what would change this conclusion" sections
-  ([references/inquiry.md](references/inquiry.md)).
+  emerging conclusions (concentrated on the enumerated load-bearing
+  claims) → cited reports with "what would change this conclusion"
+  sections, drafts delivered at native speed with the verdict following.
 - **Right-sizing triage**: declines tasks too small for ceremony, runs
   **lite mode** (one supervisor, scriptable verification — benchmarked at
   native cost) or full parallel mode only when the work earns it.
@@ -113,8 +112,7 @@ have to re-audit yourself. Genie inverts that. The full inventory:
 - **Concurrence gate by default**: nothing dispatches without explicit
   approval; an unanswered gate holds the run at zero spend. Say
   "autopilot" once to waive it permanently (revocable any time).
-- Hard budget caps, deadlines with graceful descoping, model tiering for
-  routine work, and **salvage reports** when runs end incomplete —
+- Hard budget caps, model tiering for routine work, and **salvage reports** when runs end incomplete —
   partial delivery is a deliverable, not an apology.
 
 ### 🎮 Stay in control
@@ -131,26 +129,25 @@ have to re-audit yourself. Genie inverts that. The full inventory:
 ### 🧠 Remember and know
 - Cross-run memory with tentative→standing promotion (a lesson must hold
   twice before it's trusted), provenance tracking, poisoning quarantine,
-  and machine/user/global scoping.
-- An **Obsidian-compatible knowledge graph**: typed `[[links]]`,
-  mechanically auto-linked structural edges, salience counters, bounded
-  one-hop graph recall. Point Obsidian at `~/.genie/memory/` and see
-  what your agent believes.
+  and machine/user/global scoping — and a hard trust boundary: third-party
+  content never becomes memory without your confirmation.
+- A plain-files store readable as an Obsidian vault — point it at
+  `~/.genie/memory/` and see what your agent believes, and why.
 - **Gap-aware recall**: states what it does NOT know about your task —
   and those gaps are exactly what it asks you about.
-- **`genie know <topic>`**: ask what it believes and why — a cited
-  answer plus honest gaps, no run, no agents, no cost.
+- **`genie audit <analysis>`**: red-team any existing analysis —
+  yours, a native draft, an analyst's note — without redoing its
+  research. Verification decoupled from ceremony.
 
 ### 🌙 Improve itself (gated)
 - A per-run retro scores its own mechanics; the run ledger tracks quality
   trends including **verifier escapes** — defects that got past a passing
   verdict, its most important self-metric.
-- **Dream mode**: idle-time memory consolidation behind a token-free
-  shell guard, fired by cron — it can only reorganize recorded evidence,
-  never invent facts, never write live.
 - **Amendments**: proven lessons become evidence-cited diffs to its own
-  instruction files — applied only with explicit approval, logged in
-  [AMENDMENTS.md](AMENDMENTS.md), with safety rules amendment-proof.
+  instruction files — applied only with explicit approval, each naming a
+  target metric the ledger later validates or refutes, logged in
+  [AMENDMENTS.md](AMENDMENTS.md), safety rules amendment-proof, and new
+  optimizations blocked while >2 prior ones await validation.
 
 ### 🌐 Work as a network
 - One skill, one memory, one ledger across Claude Code, OpenClaw/Hermes,
@@ -197,8 +194,8 @@ git clone https://github.com/royliu/genie ~/.openclaw/skills/genie
 ```
 
 Then, from your agent: `/genie setup` — creates the data stores
-(`~/.genie/`), checks the dream guard, detects Skill Workshop, and prints
-the one cron/heartbeat line that enables idle-time dreaming.
+(`~/.genie/`), offers git-versioning for the memory store, and reports
+readiness.
 
 Other hosts (Codex CLI, single-agent setups): see
 [references/porting.md](references/porting.md).
@@ -216,23 +213,21 @@ salvage report, not an apology.
 
 Other modes:
 
-- `/genie dream` — idle-time consolidation (normally fired by cron via
-  `scripts/dream-guard.sh`, which makes idle checks token-free)
+- `/genie audit <analysis>` — red-team an existing analysis standalone
 - `/genie setup` — install wiring and readiness check
 
 ## How it learns (and why that's safe)
 
 ```
 run → retro (capture evidence) → memory (tentative → standing after a
-2nd run confirms) → dream (consolidate, draft) → amendment (human gate)
+2nd run confirms) → consolidation → amendment (human gate)
 → better skill → next run
 ```
 
 Hard bounds, by design: memories carry provenance and are quarantined if
 they arrive instruction-shaped or unsourced (a poisoned memory is
 persistent prompt injection — treated accordingly); third-party content is
-never distilled directly; dreams may reorganize recorded evidence but never
-invent facts and never write live; at most one amendment proposal per run,
+never distilled directly; at most one amendment proposal per run,
 never to safety rules or approval gates, applied only on explicit approval
 (via OpenClaw's Skill Workshop where available). Destructive operations are
 always blocking escalations, no matter how confident an agent is.
@@ -245,19 +240,23 @@ gossip.
 ## Layout
 
 ```
-SKILL.md                          the harness (this is what the agent runs)
-AMENDMENTS.md                     evidence-cited changelog of self-improvements
-schemas/                          JSON Schemas for all agent result formats
-scripts/dream-guard.sh            token-free idle/novelty preflight for dreams
+SKILL.md           the harness (what the agent runs) — ~12KB
+AMENDMENTS.md      evidence-cited changelog of self-improvements
+VERSION            semver + latest-improvement one-liner
+schemas/           JSON Schemas for agent results (single source of truth)
+scripts/state.sh   one-call state transition + event logging
 references/
-  escalation-protocol.md          message formats, state files, decision rights
-  memory.md                       recall / distill / consolidate + poisoning rules
-  self-improvement.md             ledger, retro, amendments, agent-to-agent exchange
-  dreaming.md                     idle-time consolidation protocol
-  porting.md                      host mappings, ops recipes, containment
+  memory.md        recall / distill / consolidate + trust boundary (1 page)
+  porting.md       host mappings, containment, token budget (1 page)
 ```
 
-Run data lives outside the repo in `~/.genie/` (memory, ledger, dreams)
+v2.0.0: after an independent two-reviewer audit by Claude Code's native
+harness, ~60% of the protocol was deleted — every mechanism that had
+never fired (dream subsystem, agent-exchange spec, memory-graph
+ceremony, four reference docs). Every validated guarantee survived, and
+a validation-debt brake was added. AMENDMENTS.md tells the story.
+
+Run data lives outside the repo in `~/.genie/` (memory, ledger)
 and per-project `.genie/` dirs (run state, events, locks).
 
 ## License

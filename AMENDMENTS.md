@@ -200,3 +200,32 @@ curated ≤50/namespace store). Provenance: user statement.
   $52k anchor that the native arm shipped as its highest-conviction zone.
   Source memory: [[inquiry-agents-cost-more]]. Provenance: user statement
   + retro-analysis.
+
+## 2026-06-12 — v2.0.0: the deletion release (user-approved; reviewed by Claude Code's native harness)
+
+- Two independent native-harness reviewers (architecture critic +
+  minimalist) audited genie against its own usage evidence (5 runs, 7
+  memories). Convergent verdict: core (~40%) earned and validated; ~60%
+  speculative protocol that had never fired. User approved the cut.
+- DELETED: dream subsystem (dreaming.md, dream-guard.sh, cron, lock,
+  retention — replaced by one consolidation trigger in the distill pass);
+  agent-exchange protocol (re-add when a second agent exists; all real
+  imports arrived via user statement); typed link relations, salience
+  ceremony, topology heuristics (plain [[id]] mentions remain); know
+  mode (behavior = answering from memory, needs no mode);
+  events-consumers claims fixed (state.sh still writes events.jsonl —
+  minimalist kept it); over-threshold confirm mode; deadline descoping;
+  rejected-edit buffer (referenced a file that never existed);
+  escalation-protocol.md, self-improvement.md, inquiry.md dissolved into
+  SKILL.md/schemas/memory.md. Protocol: 71KB → 16KB (-77%).
+- ADDED: validation-debt brake — no new optimization amendment while >2
+  prior are efficacy-pending (reviewer: "the loop ships 3x faster than
+  it validates"). Schemas/ made the single source of truth for result
+  shapes (the schema-drift fix had added a copy instead of removing one).
+- KEPT against reviewer advice, with cause: the version banner (minimal
+  form) — explicit user request outranks reviewer taste, per the
+  provenance hierarchy. audit mode kept (architect: EARNED, run-5
+  evidence). Every deleted mechanism is re-derivable by the same
+  evidence process when its trigger first actually occurs.
+- Efficacy status of this amendment: its target metric is the protocol
+  itself — measured: -77% protocol mass, zero guarantees lost.

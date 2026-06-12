@@ -1,2 +1,2 @@
-1.14.0
-latest: inquiry cost cut — stakes-weighted verification, progressive delivery (draft at native speed, verdict follows), new audit mode
+2.0.0
+latest: the deletion release — ~60% of protocol removed after independent native-harness review; every validated guarantee kept, validation-debt brake added
