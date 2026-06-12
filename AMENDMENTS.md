@@ -170,3 +170,15 @@ curated ≤50/namespace store). Provenance: user statement.
   "🧞 Genie vX.Y.Z — latest self-improvement: <one-liner>" (one tiny file
   read; token-discipline compliant). Self-improvement stays visible to
   the user instead of buried in the changelog. Provenance: user statement.
+
+## 2026-06-11 — v1.13.0: second-tier token optimizations (user-directed)
+
+- Target metric: `tokens` + orchestrator overhead on future runs;
+  efficacy: pending. (1) `scripts/state.sh`: one-call state transition +
+  event append, replacing inline Python heredocs (~75% less orchestration
+  chatter, ~3-6k/run); (2) contract: batch shell into compound commands
+  (run-4 supervisors averaged 17 tool round-trips), result brevity caps
+  (summary ≤2 sentences, ≤5 decisions); (3) setup creates shared
+  `~/.genie/venv` so runs stop re-installing pytest. Honest note: this
+  approaches the floor — remaining cost is the guarantees themselves.
+  Provenance: user statement.

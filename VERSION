@@ -1,2 +1,2 @@
-1.12.0
-latest: sequential-chain continuation — full-mode cost target cut from 2.3x to ~1.4x native (run-4 evidence); plus version announcements
+1.13.0
+latest: orchestration overhead cut — state.sh helper, batched agent commands, shared tools venv, result brevity caps

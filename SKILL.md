@@ -172,10 +172,12 @@ Repeat until all modules `done` or user-blocked:
    **Watchdog:** status file untouched past `stale_after` (10 min) → lost;
    re-dispatch once from the same self-contained prompt. Verifier lost
    twice → run its checklist synchronously yourself.
-7. **Persist.** Update state.json on every transition + append one
-   `events.jsonl` line ({ts, event:
-   dispatched|escalated|resolved|verified|steered|descoped|stale|done,
-   module, detail}). State says where; events say how.
+7. **Persist.** Every transition: one call to
+   `scripts/state.sh <run-dir> <module|-> <status> [tokens] [event] [detail]`
+   — updates state.json AND appends the events.jsonl line (events:
+   dispatched|escalated|resolved|verified|steered|descoped|stale|done).
+   Never hand-write transition code inline; the helper exists so
+   orchestration chatter stays cheap. State says where; events say how.
 8. **Report.** Status table per change (inline on Claude Code; channel
    message on OpenClaw). Proactive pings on exactly three events:
    escalation batch ready, run complete, run stalled. "status" → render
@@ -192,7 +194,9 @@ Repeat until all modules `done` or user-blocked:
 > Implementation-level decisions are yours; record each in your final
 > report. Command-shaped criteria: self-check each ONCE — the
 > orchestrator independently re-runs them all, so repeated self-check
-> passes are wasted spend. NEVER guess on anything contradicting the
+> passes are wasted spend. Batch shell work into compound commands —
+> every tool round-trip costs context. Result brevity: summary ≤2
+> sentences, ≤5 decisions. NEVER guess on anything contradicting the
 > stated intent,
 > requiring credentials/secrets, destructive or hard to reverse, or
 > scope-changing — escalate instead. An escalation has exactly: id,
@@ -269,7 +273,9 @@ genie's knowledge this way too.
 **`setup`**: wire the install, no project work. Create
 `~/.genie/{memory/user,memory/process,dreams}` + empty runs.jsonl if
 missing; offer `git init ~/.genie` (versioned beliefs; sync = pull);
-chmod +x dream-guard.sh and run it once (0 or a named skip = healthy);
+create the shared tools venv `~/.genie/venv` with pytest (modules reuse
+it when the project doesn't need isolation — kills repeat installs);
+chmod +x scripts/*.sh and run dream-guard once (0 or named skip = healthy);
 detect `skill_workshop` → record amendment path; print the host's
 dream cron/heartbeat line. Finish with a readiness summary.
 
