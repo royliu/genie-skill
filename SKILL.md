@@ -20,9 +20,14 @@ Aliases: "genie", "jeannie", "orchestrate" (former name).
 1. Nothing is "done" until an independent check confirms every criterion
    with evidence. Self-reports never count — including your own report.
 2. Uncertainty travels up, never resolved by guessing: decide what the
-   plan/decisions/code can answer; escalate taste, scope, money, danger —
-   batched, with recommendations.
+   plan/decisions/code — or your own logged, vetoable judgment — can
+   answer; escalate ONLY money, danger/irreversibles, credentials, and
+   genuine scope changes — batched, with recommendations. Taste calls
+   are yours: decide, log, surface in the report.
 3. All run state lives on disk: resumable, auditable.
+4. Top KPIs: wall-clock speed and tokens — every optimization targets
+   one. Verifier escapes are the quality guard: a speed/token win that
+   raises escapes is a regression, not a win.
 
 **Token discipline.** Read a reference only when its moment comes
 (memory edge cases → references/memory.md; host specifics →
@@ -46,15 +51,17 @@ looks like. Decomposition-changing ambiguity → ask NOW (one batch, ≤4
 questions, each with a recommendation). Module-internal ambiguity →
 record as `open_questions`, don't ask. **Inquiry tasks** (research /
 analysis / strategy / thinking) are in scope: modules are investigative
-angles, the red-team is the test suite, and the user's personal
-parameters (risk tolerance, horizon, budget, intended use) are
-escalation-worthy — ask, don't assume. Decline only single-pass
-questions.
+angles, the red-team is the test suite. The user's personal parameters
+(risk tolerance, horizon, budget, intended use): recall from memory;
+missing → proceed on stated assumptions, flagged prominently at the top
+of the draft — don't block on them. Decline only single-pass questions.
 
-**Triage** (benchmarked): native for one-shot eyeball-it tasks; **lite**
-(one supervisor + orchestrator verification — proven cost parity) for
-small verified work; **full** only for genuinely parallel modules, high
-risk, or unattended runs. Record `"mode"` in state.json. Check
+**Triage** (benchmarked): cheapest-and-fastest sufficient mode wins —
+native for one-shot eyeball-it tasks; **lite** (one supervisor +
+orchestrator verification — proven cost parity) is the default for
+verified work; **full** only when parallel tracks beat lite on
+wall-clock, or for high risk / unattended runs. When two modes deliver
+the same guarantees, the KPIs (speed, tokens) decide — never prestige. Record `"mode"` in state.json. Check
 `~/.genie/templates/` first: a matching task template supplies a proven
 decomposition + criteria (cite it in the quote, vetoable there); for
 unfamiliar shapes, grep past runs' plan.md/state.json ONLY
@@ -78,7 +85,7 @@ user; stale → take over, log it). Write `.genie/<run-slug>/plan.md`
  "paused": false,
  "budget": {"max_parallel_supervisors": 4, "max_total_agents": 30,
   "agents_spawned": 0, "tokens_estimated": null,
-  "confirm_mode": "always|autopilot"},
+  "hard_cap_tokens": 250000, "confirm_mode": "autopilot|always"},
  "modules": [{"id": "...", "goal": "...", "deps": [], "criteria": [],
   "open_questions": [], "status": "pending|ready|running|verifying|done|blocked|failed",
   "attempts": 0, "dispatched_at": null, "stale_after_minutes": 10,
@@ -93,13 +100,14 @@ from recent `~/.genie/runs.jsonl` lines of the same task type — inquiry
 agents run ~1.6× code agents; fallback 28k) + 15%, quoted ±30%; record
 `tokens_estimated`. Show: module table, memories applied (vetoable),
 recall gaps, estimate with lite/native alternatives. Then:
-- **`always` (default):** WAIT for explicit concurrence before any
-  dispatch. No reply → hold `pending` at zero spend, notify once, no
-  polling. A reply picking a cheaper mode is steering — re-plan.
-- **`autopilot`:** never ask; post the estimate; budget caps brake.
-  Set by the user saying so ("autopilot" / "stop asking") → standing
-  user memory, confirmed once with the revert phrase ("ask me again
-  before runs"). Per-run overrides always win.
+- **`autopilot` (default — standing user memory [[kpi-speed-tokens-autonomy]],
+  2026-06-12):** post the estimate and dispatch immediately. Brakes, not
+  asks: budget caps, plus pause-and-escalate when the estimate exceeds
+  `hard_cap_tokens` (default 250k) or actuals pass 1.5× estimate.
+- **`always`:** WAIT for explicit concurrence before any dispatch. No
+  reply → hold `pending` at zero spend, notify once, no polling. A reply
+  picking a cheaper mode is steering — re-plan. Restored by the revert
+  phrase ("ask me again before runs"); per-run overrides always win.
 
 ## Phase 2 — Execution loop
 
@@ -188,16 +196,26 @@ decision made on the user's behalf, open items, pointer to
 process feedback → consolidate (add/update/delete, never blind-append);
 list what was remembered. When a store exceeds ~20 memories or a
 contradiction appears, do a full consolidation pass. **Retro:** append
-the ledger line (incl. `tokens` + `tokens_estimated`); note estimate
-accuracy, criteria quality, anything memory-worthy; a run shape seen for
-the 2nd time → distill a task template, and a template-driven run that
-deviated → update the template (memory.md → Task templates); check prior
-amendments' target metrics → mark `validated`/`refuted` in AMENDMENTS.md
-(refuted → rollback proposal). An amendment proposal needs: evidence,
-a named target metric, explicit user approval, an AMENDMENTS.md entry,
-and a VERSION bump (minor; line 2 = new one-liner). **No new
-optimization amendment while >2 are pending validation.** Never amend
-safety rules or approval gates.
+the ledger line (incl. `tokens`, `tokens_estimated`, `wall_minutes`);
+note estimate accuracy, criteria quality, anything memory-worthy; a run
+shape seen for the 2nd time → distill a task template, and a
+template-driven run that deviated → update the template (memory.md →
+Task templates); check prior amendments' target metrics → mark
+`validated`/`refuted` in AMENDMENTS.md.
+
+**Self-amend (autonomous lane).** An amendment whose target metric is
+wall-time or tokens, with evidence cited from the ledger/run artifacts,
+and reversible, is SELF-APPLIED at retro — no user approval: write the
+AMENDMENTS.md entry, bump VERSION (minor; line 2 = new one-liner),
+git commit + tag `vX.Y.Z` in the skill repo. Announce it in the run
+report with its one-line revert. A later `refuted` verdict AUTO-REVERTS
+that amendment's commit and logs the rollback in AMENDMENTS.md —
+rollback is mechanism, not proposal. **Brake: no new optimization
+amendment while >2 are pending validation.** Still user-gated (the
+"really necessary" list): anything weakening verification independence
+or safety rules, raising spend caps or loosening brakes, changing this
+autonomy boundary itself, publishing templates as standalone skills,
+and removing user-directed features.
 
 ## audit mode
 

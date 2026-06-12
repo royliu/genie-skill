@@ -266,6 +266,47 @@ curated ≤50/namespace store). Provenance: user statement.
   Target metric: planning tokens + escalations on the next
   template-matched run; efficacy: pending. Provenance: user statement.
 
+## 2026-06-12 — v3.0.0: autonomous self-improvement, KPI declaration, autopilot default (user-directed)
+
+- User directive: "make genie improve faster and autonomously; speed and
+  token efficiency are top KPIs; reduce user approval unless really
+  necessary — this is acceptable." Major bump: this changes approval
+  gates and the autonomy boundary, both previously immutable-by-default.
+- **KPI declaration (prime directive 4)**: wall-clock speed + tokens are
+  the top-2 ledger metrics; every optimization amendment targets one.
+  Quality guard: verifier escapes must not rise — a cost win that raises
+  escapes counts as a regression (prevents metric tunnel-vision; escapes
+  already ledger-tracked, 0 across runs 1–7). Ledger line gains
+  `wall_minutes` so the speed KPI is measured, not vibes.
+- **Autonomous amendment lane**: optimization amendments (speed/token
+  target, ledger-cited evidence, reversible) self-apply at retro — entry,
+  VERSION minor bump, git commit + tag, announced in the run report with
+  a one-line revert. `refuted` efficacy → AUTO-REVERT of that commit
+  (rollback becomes mechanism, not proposal — adopts the one Hermes
+  Curator strength genie lacked, via the git tags already present since
+  v1.12). Validation-debt brake (>2 pending blocks new optimization
+  amendments) RETAINED as the governor on the faster loop.
+- **Still user-gated ("really necessary")**: weakening verification
+  independence or safety rules, raising spend caps / loosening brakes,
+  changing the autonomy boundary itself, publishing templates as skills,
+  removing user-directed features.
+- **`confirm_mode` default flipped `always` → `autopilot`** per standing
+  user memory [[kpi-speed-tokens-autonomy]]. Brakes replace asks: budget
+  caps + `hard_cap_tokens` (default 250k, ~2× the largest run to date)
+  + pause at actuals >1.5× estimate. "Ask me again before runs" reverts.
+  Supersedes the v1.x concurrence-gate default (the gate itself remains
+  available, and the no-unapproved-spend guarantee is re-expressed as
+  hard caps rather than a wait).
+- **Escalation list narrowed**: taste calls are now orchestrator
+  decisions (logged, vetoable in the report); only money, danger/
+  irreversibles, credentials, and genuine scope changes escalate.
+  Inquiry user-parameters: recall from memory or proceed on flagged
+  assumptions instead of blocking asks.
+- **Triage tie-breaker**: equal guarantees → KPIs decide the mode.
+- Target metrics: user asks per run (expect →0 for in-scope runs),
+  wall_minutes vs same-shape priors, amendment cycle time (proposal →
+  applied). Efficacy: pending. Provenance: user statement.
+
 ## 2026-06-12 — v2.1.1: experience-search trust boundary (self-caught)
 
 - v2.1.0's experience search allowed grepping run REPORTS, which contain
