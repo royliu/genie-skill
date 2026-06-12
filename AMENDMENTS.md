@@ -266,6 +266,23 @@ curated ≤50/namespace store). Provenance: user statement.
   Target metric: planning tokens + escalations on the next
   template-matched run; efficacy: pending. Provenance: user statement.
 
+## 2026-06-12 — v3.2.0: ambient wired at setup (user-directed)
+
+- Gap: v3.1.0 defined ambient but left the trigger as a manual install
+  step — on this machine and the user's OpenClaw host, nothing was
+  scheduled and no pass had ever run. Defined ≠ live.
+- **Setup mode now wires the trigger itself**: detect the host scheduler
+  (OpenClaw cron → HEARTBEAT.md fallback; Claude Code → /schedule;
+  none → manual fallback stated), install the every-6h `genie ambient`
+  job idempotently, run the first watermark pass immediately, and
+  announce the trigger with its one-line removal command. Announced-
+  with-revert rather than ask-first, per the v3.0.0 brakes-not-asks
+  directive; installing a 6h read-only pass raises no spend cap and
+  touches nothing outside `~/.genie/` except the scheduler entry.
+- Target metric: on the next fresh-host setup, an `ambient` ledger line
+  exists the same day with zero manual wiring steps. Efficacy: pending.
+  Provenance: user statement.
+
 ## 2026-06-12 — v3.1.0: ambient mode — passive distill from host sessions (user-directed)
 
 - User directive: make genie ambiently self-improve the host (OpenClaw)

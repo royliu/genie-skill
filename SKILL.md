@@ -239,7 +239,14 @@ porting.md); full procedure: references/ambient.md.
 
 Create `~/.genie/{memory/user,memory/process}` + empty runs.jsonl if
 missing; offer `git init ~/.genie`; create shared tools venv
-`~/.genie/venv` (pytest); chmod +x scripts/*.sh; report readiness.
+`~/.genie/venv` (pytest); chmod +x scripts/*.sh. **Wire ambient**
+(idempotent — existing trigger → skip): detect the host scheduler and
+install a recurring `genie ambient` every 6h (OpenClaw: `openclaw cron
+add`, else one HEARTBEAT.md line; Claude Code: the /schedule skill; no
+scheduler → say so and note the manual fallback — exact recipes:
+porting.md). Run the first pass NOW (sets the watermark, <1k tokens),
+announce the trigger with its one-line removal command, then report
+readiness.
 
 ## Resuming & portability
 
