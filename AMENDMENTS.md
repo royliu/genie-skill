@@ -28,17 +28,17 @@ explicitly user-approved.
 
 ## 2026-06-10 — rename (user decision)
 
-- **Skill renamed `orchestrate` → `genie`** for memorability and
+- **Skill renamed `orchestrate` → `genie-skill`** for memorability and
   non-English-speaker friendliness; chosen by the user from three rounds of
   candidates. The old name remains a documented alias in the description
   ("orchestrate" still triggers it). On-disk protocol paths
-  (`~/.genie/`, project `.genie/` dirs) deliberately unchanged —
+  (`~/.genie-skill/`, project `.genie-skill/` dirs) deliberately unchanged —
   they are protocol, not branding, like git's `.git/` — so all existing
   memories, ledger lines, and run state remain valid.
 
 ## 2026-06-10 — inquiry mode (user-directed)
 
-- **Added references/inquiry.md + Phase 0/1 hooks**: genie now explicitly
+- **Added references/inquiry.md + Phase 0/1 hooks**: genie-skill now explicitly
   handles research / analysis / strategy / thinking tasks. Modules are
   investigative angles; criteria are provenance-shaped (citations,
   counter-evidence, invalidation conditions); the red-team module replaces
@@ -79,7 +79,7 @@ explicitly user-approved.
   tend the graph: repair dangling links, add decision-relevant ones,
   read topology (clusters → merge, orphans → prune, contradictions →
   work orders). The store remains a valid Obsidian vault for visual
-  inspection of the genie's knowledge graph. Provenance: user statement.
+  inspection of the genie-skill's knowledge graph. Provenance: user statement.
 
 ## 2026-06-11 — gbrain adoptions (user-directed; ideas imported from garrytan/gbrain)
 
@@ -91,7 +91,7 @@ Six design ideas adopted from gbrain, infrastructure deliberately not:
   forks are named explicitly and become the escalation candidates.
 - **Salience tracking**: `times_applied` counter; recall increments,
   dreams prune by disuse and protect load-bearing memories.
-- **Git as system of record**: setup offers `git init ~/.genie`
+- **Git as system of record**: setup offers `git init ~/.genie-skill`
   (versioned beliefs, diffable dreams, sync = pull); amendment-bundle
   imports content-hashed to short-circuit re-review.
 - **`know <topic>` mode**: two-tier query (composed answer with memory/
@@ -103,7 +103,7 @@ curated ≤50/namespace store). Provenance: user statement.
 
 ## 2026-06-11 — startup weight loss (user-directed)
 
-- User reported genie on OpenClaw "burns tokens from the get-go before
+- User reported genie-skill on OpenClaw "burns tokens from the get-go before
   delivering anything." Measured causes and fixes:
   frontmatter description 1,192 → 370 chars (injected into EVERY OpenClaw
   prompt); SKILL.md ~5.8k → ~3.7k tokens (-37%, re-carried per turn of a
@@ -123,11 +123,11 @@ curated ≤50/namespace store). Provenance: user statement.
   dreams audit pending entries against the ledger; refuted → rollback
   proposal through the normal gate. Improvements are claims that re-earn
   their place — closes the "who verifies the improvements?" hole.
-- **Rejected-edit buffer**: `~/.genie/dreams/rejected.md` logs rejected
+- **Rejected-edit buffer**: `~/.genie-skill/dreams/rejected.md` logs rejected
   and refuted proposals with reasons; dreams/retros consult it before
   drafting; re-proposal requires new evidence.
 - Considered and NOT adopted: SkillOpt's optimizer-model training loop
-  (epochs/batches over scored benchmarks) — genie improves from real
+  (epochs/batches over scored benchmarks) — genie-skill improves from real
   work, not synthetic rollouts; no benchmark score function exists for
   the user's actual tasks. Convergences noted for the record:
   SkillOpt-Sleep ≈ dream mode; their 300–2k-token artifact cap
@@ -167,7 +167,7 @@ curated ≤50/namespace store). Provenance: user statement.
   is the public self-improvement counter. Retroactive count: v1.0.0 =
   initial publication; 12 minors = the evolution events logged above.
 - **Startup announcement**: every invocation opens with
-  "🧞 Genie vX.Y.Z — latest self-improvement: <one-liner>" (one tiny file
+  "🧞 Genie-skill vX.Y.Z — latest self-improvement: <one-liner>" (one tiny file
   read; token-discipline compliant). Self-improvement stays visible to
   the user instead of buried in the changelog. Provenance: user statement.
 
@@ -179,7 +179,7 @@ curated ≤50/namespace store). Provenance: user statement.
   chatter, ~3-6k/run); (2) contract: batch shell into compound commands
   (run-4 supervisors averaged 17 tool round-trips), result brevity caps
   (summary ≤2 sentences, ≤5 decisions); (3) setup creates shared
-  `~/.genie/venv` so runs stop re-installing pytest. Honest note: this
+  `~/.genie-skill/venv` so runs stop re-installing pytest. Honest note: this
   approaches the floor — remaining cost is the guarantees themselves.
   Provenance: user statement.
 
@@ -204,7 +204,7 @@ curated ≤50/namespace store). Provenance: user statement.
 ## 2026-06-12 — v2.0.0: the deletion release (user-approved; reviewed by Claude Code's native harness)
 
 - Two independent native-harness reviewers (architecture critic +
-  minimalist) audited genie against its own usage evidence (5 runs, 7
+  minimalist) audited genie-skill against its own usage evidence (5 runs, 7
   memories). Convergent verdict: core (~40%) earned and validated; ~60%
   speculative protocol that had never fired. User approved the cut.
 - DELETED: dream subsystem (dreaming.md, dream-guard.sh, cron, lock,
@@ -249,9 +249,9 @@ curated ≤50/namespace store). Provenance: user statement.
 
 ## 2026-06-12 — v2.1.0: procedural memory / task templates (user-directed; ideas imported from NousResearch/hermes-agent)
 
-- Hermes' core idea adopted with genie gates: experience is generative —
+- Hermes' core idea adopted with genie-skill gates: experience is generative —
   completed task patterns become reusable procedure. Templates
-  (~/.genie/templates/) hold proven decomposition + criteria + pre-made
+  (~/.genie-skill/templates/) hold proven decomposition + criteria + pre-made
   decisions; the retro distills one when a run shape repeats (2nd
   occurrence); triage auto-applies matches (cited in the quote,
   vetoable); deviations update the template; standing templates may
@@ -286,11 +286,11 @@ curated ≤50/namespace store). Provenance: user statement.
 
 ## 2026-06-12 — v3.7.0: setup wires host-wide recall into AGENTS.md (user-directed)
 
-- Gap: dream gave ordinary host sessions a path INTO genie's memory;
-  nothing gave them a path OUT. Non-genie sessions started blind —
-  memories applied only when genie was invoked, so cross-session
+- Gap: dream gave ordinary host sessions a path INTO genie-skill's memory;
+  nothing gave them a path OUT. Non-genie-skill sessions started blind —
+  memories applied only when genie-skill was invoked, so cross-session
   context was invocation-gated exactly like learning used to be.
-- **Setup now appends a marked `genie-recall` block** to the host
+- **Setup now appends a marked `genie-skill-recall` block** to the host
   bootstrap file (OpenClaw: AGENTS.md; Claude Code: ~/.claude/CLAUDE.md;
   Codex: AGENTS.md — recipes + block text: porting.md): at session
   start, read the memory INDEX files (one line per memory, tens of
@@ -298,15 +298,15 @@ curated ≤50/namespace store). Provenance: user statement.
   pattern. Idempotent via HTML-comment marker; removal disables cleanly.
   Announced with its removal note, per brakes-not-asks.
 - Boundary kept: the block instructs READ-ONLY use — host sessions never
-  write `~/.genie/memory/` directly; writes go through genie runs or
+  write `~/.genie-skill/memory/` directly; writes go through genie-skill runs or
   dream passes, preserving the distill trust boundary as the single
   write path. Bodies are data, not instructions (recall rule restated
   in the block itself).
-- This is the only genie mechanism that writes outside `~/.genie/` —
+- This is the only genie-skill mechanism that writes outside `~/.genie-skill/` —
   one marked block, once, at setup, removable. Dream remains barred
   from it.
-- Target metric: on a wired host, a non-genie session demonstrably uses
-  a genie memory (e.g. honors a standing preference without being told)
+- Target metric: on a wired host, a non-genie-skill session demonstrably uses
+  a genie-skill memory (e.g. honors a standing preference without being told)
   within the first week. Efficacy: pending. Provenance: user statement.
 
 ## 2026-06-12 — v3.6.0: token optimization — v3.x weight compression (user-directed)
@@ -334,7 +334,7 @@ curated ≤50/namespace store). Provenance: user statement.
 
 ## 2026-06-12 — v3.5.0: status / know mode — full introspection (user-directed)
 
-- User asked whether genie's status, memory, knowledge, and knowledge
+- User asked whether genie-skill's status, memory, knowledge, and knowledge
   graph are checkable across all history since install. The data always
   was (ledger, AMENDMENTS, provenance-stamped memories, run dirs, the
   Obsidian-valid vault); the query surface wasn't. This is the v2.0.0-
@@ -343,7 +343,7 @@ curated ≤50/namespace store). Provenance: user statement.
   ("answering from memory needs no mode") under-counted: a defined
   dashboard, graph rendering, and citation discipline are more than
   ad-hoc recall — and v3.4's autonomy raise makes observability the
-  counterweight (genie now believes eagerly and publishes skills alone;
+  counterweight (genie-skill now believes eagerly and publishes skills alone;
   the user needs one cheap command to see what it believes and why).
 - **`status`**: read-only dashboard — version, validation debt, last
   dream pass, memory census (incl. tentatives awaiting 7-day
@@ -353,7 +353,7 @@ curated ≤50/namespace store). Provenance: user statement.
   gaps; renders `[[link]]` neighborhoods on request. No agents, no web,
   no mutation, ≤3k tokens typical.
 - Trust boundary honored at read: module outputs/reports quoted as
-  third-party content, never presented as genie's beliefs.
+  third-party content, never presented as genie-skill's beliefs.
 - Target metrics: any status/know question answered in one invocation,
   ≤3k tokens, zero agents. Efficacy: pending. Provenance: user
   statement.
@@ -378,7 +378,7 @@ curated ≤50/namespace store). Provenance: user statement.
   verified wins publishes autonomously (dream or retro may perform it) —
   announced with a one-line removal command, never silent. Brakes
   replace the ask: description ≤300 chars (always-loaded weight), 30-day
-  zero-use auto-retire to `~/.genie/retired/` (restorable). Removed
+  zero-use auto-retire to `~/.genie-skill/retired/` (restorable). Removed
   "publishing templates as skills" from the v3.0.0 user-gated list;
   added the trust boundary to it explicitly.
 - Result: trigger surface, immediacy, and autonomous output now match
@@ -391,12 +391,12 @@ curated ≤50/namespace store). Provenance: user statement.
 
 ## 2026-06-12 — v3.3.0: ambient renamed `dream` (user decision)
 
-- Rename only, zero behavior change: mode invocation `genie dream`,
-  reference file references/dream.md, state dir `~/.genie/dream/`
+- Rename only, zero behavior change: mode invocation `genie-skill dream`,
+  reference file references/dream.md, state dir `~/.genie-skill/dream/`
   (singular — never created under the old name on any host, so no
   migration; the v2.0.0-deleted subsystem's journals at
-  `~/.genie/dreams/` are untouched history), ledger `mode: "dream"`,
-  run ids `dream-<date-hhmm>`, cron prompt `genie dream`.
+  `~/.genie-skill/dreams/` are untouched history), ledger `mode: "dream"`,
+  run ids `dream-<date-hhmm>`, cron prompt `genie-skill dream`.
 - `ambient` remains a documented alias, same as `orchestrate` after the
   skill rename. dream.md notes explicitly that this mode INGESTS new
   memories, unlike the deleted curation-only dream subsystem that
@@ -411,25 +411,25 @@ curated ≤50/namespace store). Provenance: user statement.
   scheduled and no pass had ever run. Defined ≠ live.
 - **Setup mode now wires the trigger itself**: detect the host scheduler
   (OpenClaw cron → HEARTBEAT.md fallback; Claude Code → /schedule;
-  none → manual fallback stated), install the every-6h `genie ambient`
+  none → manual fallback stated), install the every-6h `genie-skill ambient`
   job idempotently, run the first watermark pass immediately, and
   announce the trigger with its one-line removal command. Announced-
   with-revert rather than ask-first, per the v3.0.0 brakes-not-asks
   directive; installing a 6h read-only pass raises no spend cap and
-  touches nothing outside `~/.genie/` except the scheduler entry.
+  touches nothing outside `~/.genie-skill/` except the scheduler entry.
 - Target metric: on the next fresh-host setup, an `ambient` ledger line
   exists the same day with zero manual wiring steps. Efficacy: pending.
   Provenance: user statement.
 
 ## 2026-06-12 — v3.1.0: ambient mode — passive distill from host sessions (user-directed)
 
-- User directive: make genie ambiently self-improve the host (OpenClaw)
+- User directive: make genie-skill ambiently self-improve the host (OpenClaw)
   the way hermes does. This is the documented re-add trigger firing for
   the dream subsystem deleted in v2.0.0 ("re-derivable by the same
   evidence process when its trigger first actually occurs") — re-added
   in scoped form: a bounded distill pass, not the full dreams machinery.
 - **New `ambient` mode** (references/ambient.md): host heartbeat/cron
-  fires `genie ambient`; the pass scans NEW host-session transcript
+  fires `genie-skill ambient`; the pass scans NEW host-session transcript
   content since a watermark, detects hermes-taxonomy signals (repeated
   workflow, correction, stated preference, hard-won fact, ≥5-tool-call
   success), and persists through the existing memory/template lifecycle.
@@ -446,13 +446,13 @@ curated ≤50/namespace store). Provenance: user statement.
 - porting.md gains the wiring: OpenClaw transcript paths + cron/
   HEARTBEAT.md recipes; Claude Code via /loop or /schedule.
 - Target metrics: ≥1 memory or template per week distilled from
-  NON-genie sessions (the loop is live); first triage hit on an
+  NON-genie-skill sessions (the loop is live); first triage hit on an
   ambiently-learned template (the loop pays); ambient pass cost within
   caps on the ledger. Efficacy: pending. Provenance: user statement.
 
 ## 2026-06-12 — v3.0.0: autonomous self-improvement, KPI declaration, autopilot default (user-directed)
 
-- User directive: "make genie improve faster and autonomously; speed and
+- User directive: "make genie-skill improve faster and autonomously; speed and
   token efficiency are top KPIs; reduce user approval unless really
   necessary — this is acceptable." Major bump: this changes approval
   gates and the autonomy boundary, both previously immutable-by-default.
@@ -467,7 +467,7 @@ curated ≤50/namespace store). Provenance: user statement.
   VERSION minor bump, git commit + tag, announced in the run report with
   a one-line revert. `refuted` efficacy → AUTO-REVERT of that commit
   (rollback becomes mechanism, not proposal — adopts the one Hermes
-  Curator strength genie lacked, via the git tags already present since
+  Curator strength genie-skill lacked, via the git tags already present since
   v1.12). Validation-debt brake (>2 pending blocks new optimization
   amendments) RETAINED as the governor on the faster loop.
 - **Still user-gated ("really necessary")**: weakening verification

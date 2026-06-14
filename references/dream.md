@@ -1,23 +1,23 @@
 # Dream mode — passive self-improvement from host sessions (one page)
 
-Invocation: `genie dream` (alias: `ambient`, the mode's original name).
+Invocation: `genie-skill dream` (alias: `ambient`, the mode's original name).
 Designed to be fired by a host heartbeat or cron (mappings: porting.md),
 fine manually. No run dir, no agents, no quote: a bounded distill pass
 over what the HOST did since the last pass — ordinary sessions, not
-genie runs. This is the hermes-parity loop: hermes authors skills
-passively from every session; genie dreams over its day and distills
+genie-skill runs. This is the hermes-parity loop: hermes authors skills
+passively from every session; genie-skill dreams over its day and distills
 memories and templates, with provenance. (Distinct from the v2.0.0-
 deleted dream subsystem, which curated existing memories; this mode
-INGESTS new ones. Old journals in `~/.genie/dreams/` are unrelated
+INGESTS new ones. Old journals in `~/.genie-skill/dreams/` are unrelated
 history.)
 
 ## Pass procedure
 
-1. **Watermark.** Read `~/.genie/dream/state.json`
+1. **Watermark.** Read `~/.genie-skill/dream/state.json`
    (`{"last_pass": ts, "offsets": {<transcript>: byte}}`; dir missing →
    create). First ever pass: set the watermark to now, scan only the
    most recent session, report readiness — never trawl months of history.
-   Take `~/.genie/dream/lock` (live lock → exit silently; stale >1h →
+   Take `~/.genie-skill/dream/lock` (live lock → exit silently; stale >1h →
    take over, log it).
 2. **Scan NEW transcript content only** (host transcript locations:
    porting.md). Signal taxonomy (hermes-derived):
@@ -42,7 +42,7 @@ history.)
    blind-append: first sighting → `tentative`; 2nd confirmation →
    `standing`; template at 2nd shape occurrence. Signals that are not
    yet memories accumulate as one line each in
-   `~/.genie/dream/observations.jsonl`
+   `~/.genie-skill/dream/observations.jsonl`
    (`{"date", "signal", "shape", "evidence"}`) — the cross-pass counter
    that makes "2nd occurrence" detectable. Prune observations >30 days
    old with no second sighting.
@@ -56,7 +56,7 @@ history.)
 ## Hard rules
 
 - **Read + distill only.** No agents, no web, no writes outside
-  `~/.genie/`. Ever.
+  `~/.genie-skill/`. Ever.
 - **Budget: ≤10k tokens per pass** (target <1k when nothing is new — the
   watermark check is the whole cost). Cap hit → stop, advance the
   watermark only past content actually processed.

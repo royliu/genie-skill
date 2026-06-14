@@ -1,8 +1,8 @@
-# 🧞 Genie
+# 🧞 Genie-skill
 
 **State a wish. Get a verified result. It gets better while you sleep.**
 
-Genie is a portable, self-improving work harness packaged as a single
+Genie-skill is a portable, self-improving work harness packaged as a single
 [Agent Skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) —
 plain markdown and JSON, no framework, no server. Drop it into Claude Code,
 OpenClaw, Codex CLI, or any SKILL.md-compatible agent and it turns that
@@ -31,7 +31,7 @@ mistake fixed on one machine is faithfully repeated on every other. The
 industry's answer has been bigger context windows and better models —
 making the amnesiac smarter, not curing the amnesia.
 
-Genie's answer is three nested loops, each feeding the next:
+Genie-skill's answer is three nested loops, each feeding the next:
 
 1. **Trust** — within a run, nothing is done until independently verified.
    This is the foundation: an agent whose claims you can't trust has
@@ -73,21 +73,21 @@ and an imported practice's "proven."
 
 **Claude Code**
 ```bash
-git clone https://github.com/royliu/genie ~/.claude/skills/genie
+git clone https://github.com/royliu/genie-skill ~/.claude/skills/genie-skill
 ```
 
 **OpenClaw / Hermes**
 ```bash
-git clone https://github.com/royliu/genie ~/.openclaw/skills/genie
+git clone https://github.com/royliu/genie-skill ~/.openclaw/skills/genie-skill
 ```
 
 Then, in a session on that host:
 
 ```
-genie setup
+genie-skill setup
 ```
 
-One command does everything: creates the data stores (`~/.genie/`),
+One command does everything: creates the data stores (`~/.genie-skill/`),
 offers git-versioning for the memory store, **installs the dream cron**
 (passive learning every 6h, announced with its removal one-liner), runs
 the first dream pass, and **wires a recall block** into the host's
@@ -103,11 +103,11 @@ Other hosts (Codex CLI, single-agent setups): see
 triggers on intent:
 
 ```
-genie: build me a REST API for my notes app with tests, docs, and deploy config
-genie: research the best vector DB for my use case and recommend one
+genie-skill: build me a REST API for my notes app with tests, docs, and deploy config
+genie-skill: research the best vector DB for my use case and recommend one
 ```
 
-Genie recalls relevant memories, applies a proven template if the task
+Genie-skill recalls relevant memories, applies a proven template if the task
 shape repeats, quotes the cost (±30%, with cheaper alternatives), and
 dispatches immediately on autopilot. You'll be interrupted only if a
 brake trips or a question is genuinely yours.
@@ -116,14 +116,14 @@ brake trips or a question is genuinely yours.
 
 | Say | Get |
 |---|---|
-| `genie: <wish>` | full orchestrated run: decompose → execute → verify → report |
-| `genie audit <analysis>` | red-team an existing analysis without redoing its research (~30k) |
-| `genie status` | dashboard: version, validation debt, last dream pass, memory census, runs |
-| `genie know <question>` | any question over its memory/history, answered with citations |
-| `genie dream` | manual passive-learning pass (the cron does this automatically) |
-| `genie remember <fact>` | instant memory write — no waiting for a dream pass |
-| `genie forget <id\|that>` | delete a memory, logged |
-| `genie setup` | install wiring + readiness check (idempotent) |
+| `genie-skill: <wish>` | full orchestrated run: decompose → execute → verify → report |
+| `genie-skill audit <analysis>` | red-team an existing analysis without redoing its research (~30k) |
+| `genie-skill status` | dashboard: version, validation debt, last dream pass, memory census, runs |
+| `genie-skill know <question>` | any question over its memory/history, answered with citations |
+| `genie-skill dream` | manual passive-learning pass (the cron does this automatically) |
+| `genie-skill remember <fact>` | instant memory write — no waiting for a dream pass |
+| `genie-skill forget <id\|that>` | delete a memory, logged |
+| `genie-skill setup` | install wiring + readiness check (idempotent) |
 
 **Mid-run steering:** `status` · `pause` · `resume` · `cancel` ·
 `skip <module>` — or describe a scope change in plain words and it
@@ -133,11 +133,11 @@ re-plans with a cost delta. Incomplete runs end with a salvage report
 **Vetoes and reverts** (each one line, anytime):
 - `forget that` — delete a memory it learned
 - `ask me again before runs` — restore the ask-first concurrence gate
-- `revert genie to vX.Y.Z` — roll back any self-amendment (git-tagged)
+- `revert genie-skill to vX.Y.Z` — roll back any self-amendment (git-tagged)
 
 ## Best practices
 
-**Use genie when:**
+**Use genie-skill when:**
 - The task has **3+ verifiable pieces** — decomposition and parallel
   supervisors pay off
 - **Being wrong is expensive** — research you'll act on with money or
@@ -147,15 +147,15 @@ re-plans with a cost delta. Incomplete runs end with a salvage report
 - **The task shape repeats** — the 2nd occurrence mints a template;
   the 3rd run is faster and cheaper than the 1st
 
-**Skip genie when** it's a quick question or one-file edit — native chat
-is cheaper, and genie's own triage will tell you so. Cost rule of thumb
+**Skip genie-skill when** it's a quick question or one-file edit — native chat
+is cheaper, and genie-skill's own triage will tell you so. Cost rule of thumb
 from its ledger: lite mode ≈ native cost with verification added; full
 mode ≈ 2.3× on builds, ~3× on inquiry — worth it only for parallel,
 high-stakes, or unattended work. Dream mode needs nothing from you
 either way; it learns from ordinary sessions regardless.
 
 **Day-0 seeding (5 minutes, recommended):** state a preference or two in
-plain chat ("from now on, always …"), then say `genie dream`. You'll see
+plain chat ("from now on, always …"), then say `genie-skill dream`. You'll see
 it learn immediately, and the preference acts in your next relevant task
 — flagged as INFERRED, vetoable with two words.
 
@@ -164,12 +164,12 @@ language — "hard cap 50k", "max 2 agents", "ask before dispatching this
 one". Defaults: 250k hard cap, pause at 1.5× estimate, 4 parallel
 supervisors, 3 verification rounds before escalation.
 
-**Check in weekly:** `genie status` shows what it learned, what it
+**Check in weekly:** `genie-skill status` shows what it learned, what it
 published, which self-improvements are still awaiting validation, and
 the run ledger trend. The memory store is a valid Obsidian vault — open
-`~/.genie/memory/` to *see* what your agent believes and why.
+`~/.genie-skill/memory/` to *see* what your agent believes and why.
 
-**Trust the trust boundary:** genie never distills third-party content
+**Trust the trust boundary:** genie-skill never distills third-party content
 (web pages, API responses, other people's text) into memory — only your
 words and its own verified decisions. If a "lesson" from a document
 matters, confirm it once and it becomes a user-statement. This is the
@@ -180,7 +180,7 @@ one gate that never loosens, and only you can change it.
 ```
 ordinary sessions ──→ dream (6-hourly distill) ──┐
                                                  ├─→ memory + templates
-genie runs ──→ retro (evidence capture) ─────────┘        │
+genie-skill runs ──→ retro (evidence capture) ─────────┘        │
                                                           ▼
             every session recalls ←── store ←── eager belief (loud,
                                                 vetoable, standing after
@@ -222,8 +222,8 @@ references/
 The version number is the public self-improvement counter — every minor
 bump is a logged, evidence-cited amendment in
 [AMENDMENTS.md](AMENDMENTS.md), and every version is a git tag you can
-revert to. Run data lives outside the repo in `~/.genie/` (memory,
-templates, ledger, dream state) and per-project `.genie/` dirs (run
+revert to. Run data lives outside the repo in `~/.genie-skill/` (memory,
+templates, ledger, dream state) and per-project `.genie-skill/` dirs (run
 state, events, locks).
 
 ## License

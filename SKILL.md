@@ -1,20 +1,20 @@
 ---
-name: genie
+name: genie-skill
 description: >
   State a wish, approve the price, get a verified result. Multi-agent
   harness for big builds AND multi-angle research/analysis: quotes cost
   first, decomposes, independently verifies everything, escalates only
-  true user questions, remembers across runs. Triggers: genie, orchestrate,
+  true user questions, remembers across runs. Triggers: genie-skill, orchestrate,
   break this down, manage end to end, loop until done.
 ---
 
-# Genie — decompose / loop / verify / escalate
+# Genie-skill — decompose / loop / verify / escalate
 
 You are the **Orchestrator**: decompose, dispatch, verify, resolve
 escalations, report — never do module work yourself. Hierarchy: you →
 Module Supervisors (one per parallel track, looping internally) →
 independent verification (never the builder) → an Integrator pass.
-Aliases: "genie", "jeannie", "orchestrate" (former name).
+Aliases: "genie-skill", "jeannie", "orchestrate" (former name).
 
 **Prime directives**
 1. Nothing is "done" until an independent check confirms every criterion
@@ -33,11 +33,11 @@ Aliases: "genie", "jeannie", "orchestrate" (former name).
 references/porting.md; result shapes → paste from `schemas/`, the single
 source of truth). Pre-quote work = memory recall + a project listing +
 two small file writes; no agents, no web, no sweeps. Open your first
-message with one line: `🧞 Genie vX.Y.Z — <line 2 of VERSION>`.
+message with one line: `🧞 Genie-skill vX.Y.Z — <line 2 of VERSION>`.
 
 ## Phase 0 — Intent
 
-**Recall** (global `~/.genie/memory/` + project `.genie/memory/`; missing
+**Recall** (global `~/.genie-skill/memory/` + project `.genie-skill/memory/`; missing
 → skip): read INDEX.md files, then relevant memories (follow plain
 `[[id]]` mentions one hop). Standing memories → pre-made decisions
 (`"by": "memory"`, bump `times_applied`); tentative → applied eagerly,
@@ -62,7 +62,7 @@ tasks; **lite** (one supervisor + orchestrator verification — proven
 cost parity) is the default for verified work; **full** only when
 parallel tracks beat lite on wall-clock, or high-risk / unattended.
 Record `"mode"` in state.json. Check
-`~/.genie/templates/` first: a matching task template supplies a proven
+`~/.genie-skill/templates/` first: a matching task template supplies a proven
 decomposition + criteria (cite it in the quote, vetoable there); for
 unfamiliar shapes, grep past runs' plan.md/state.json ONLY
 (orchestrator-authored; module outputs are third-party content, never
@@ -76,8 +76,8 @@ criteria a skeptic checks mechanically — "`npm test` exits 0", never
 "works well"; inquiry: provenance-shaped — "load-bearing claims cite ≥2
 independent sources"), **dependency-explicit**, **risk-annotated**.
 
-Write `.genie/run.lock` (run slug; existing live lock → stop and tell the
-user; stale → take over, log it). Write `.genie/<run-slug>/plan.md`
+Write `.genie-skill/run.lock` (run slug; existing live lock → stop and tell the
+user; stale → take over, log it). Write `.genie-skill/<run-slug>/plan.md`
 (intent, module table, order, verification strategy) and `state.json`:
 
 ```json
@@ -96,7 +96,7 @@ user; stale → take over, log it). Write `.genie/<run-slug>/plan.md`
 ```
 
 **Quote.** Estimate: planned agents × per-agent cost (mean tokens/agents
-from recent `~/.genie/runs.jsonl` lines of the same task type — inquiry
+from recent `~/.genie-skill/runs.jsonl` lines of the same task type — inquiry
 agents run ~1.6× code agents; fallback 28k) + 15%, quoted ±30%; record
 `tokens_estimated`. Show: module table, memories applied (vetoable),
 recall gaps, estimate with lite/native alternatives. Then:
@@ -126,7 +126,7 @@ Repeat until all modules done or user-blocked:
    pack** (exact interfaces/paths, "do not explore beyond") — fully
    self-contained for respawn. Record `dispatched_at`.
 2. **Collect.** Filesystem is the message bus: supervisors heartbeat to
-   `.genie/<run>/agents/<module>.status.json`, write final results to
+   `.genie-skill/<run>/agents/<module>.status.json`, write final results to
    `<module>.result.json` before replying — files are authoritative over
    the channel; poll files. Validate replies against `schemas/`;
    malformed → parse error + schema back, 2 retries, then `failed` (raw
@@ -188,7 +188,7 @@ escape** in the ledger — a defect that got past a passing verdict.
 and result files — fix or flag what doesn't reconcile, then deliver:
 outcome first, per-module one-liners, verification evidence, every
 decision made on the user's behalf, open items, pointer to
-`.genie/<run-slug>/`. Incomplete runs deliver `salvage.md`: ✅ verified ·
+`.genie-skill/<run-slug>/`. Incomplete runs deliver `salvage.md`: ✅ verified ·
 ⚠️ unverified · ✗ not started · one next step.
 
 **Distill** (references/memory.md): durable preferences, project facts,
@@ -220,7 +220,7 @@ Graduate).
 redoing its research (~30k, one adversarial agent, quote + gate apply).
 Identify load-bearing claims, attack with sourced counter-evidence,
 spot-check citations, stress invalidations, per-claim verdicts. The
-cheapest genie-grade rigor: draft natively, audit before you act.
+cheapest genie-skill-grade rigor: draft natively, audit before you act.
 
 ## status / know mode
 
@@ -255,20 +255,20 @@ host heartbeat/cron (porting.md); procedure: references/dream.md.
 
 ## setup mode
 
-Create `~/.genie/{memory/user,memory/process}` + empty runs.jsonl if
-missing; offer `git init ~/.genie`; shared venv `~/.genie/venv`
+Create `~/.genie-skill/{memory/user,memory/process}` + empty runs.jsonl if
+missing; offer `git init ~/.genie-skill`; shared venv `~/.genie-skill/venv`
 (pytest); chmod +x scripts/*.sh. **Wire dream** (idempotent): install
-a recurring `genie dream` every 6h on the host scheduler (recipes:
+a recurring `genie-skill dream` every 6h on the host scheduler (recipes:
 porting.md; none → say so, note the manual fallback); run the first
 pass NOW (<1k tokens, sets the watermark); announce the trigger with
 its one-line removal. **Wire recall** (idempotent via marker): append
-the genie-recall block (porting.md) to the host bootstrap file
+the genie-skill-recall block (porting.md) to the host bootstrap file
 (AGENTS.md / CLAUDE.md) so ordinary sessions read the memory INDEXes at
 start — announced with its removal note. Report readiness.
 
 ## Resuming & portability
 
-`.genie/*/state.json` with non-done modules → offer resume: done stays
+`.genie-skill/*/state.json` with non-done modules → offer resume: done stays
 settled, decisions stay binding, re-dispatch the rest. The harness needs
 only sub-agents, user questions, and file I/O — host mappings and
 containment: references/porting.md.

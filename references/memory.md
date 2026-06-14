@@ -1,7 +1,7 @@
-# Genie memory — recall / distill / consolidate (one page)
+# Genie-skill memory — recall / distill / consolidate (one page)
 
-Plain files. Global `~/.genie/memory/{user,process}/`, project
-`.genie/memory/project/`. Each store has an INDEX.md (one line per
+Plain files. Global `~/.genie-skill/memory/{user,process}/`, project
+`.genie-skill/memory/project/`. Each store has an INDEX.md (one line per
 memory: `- <id> — <hook>`). One fact per file:
 
 ```markdown
@@ -62,7 +62,7 @@ ledger before being trusted.
 
 Memories store facts; templates store **procedures** — a proven
 decomposition, its criteria patterns, and pre-made decisions for a
-recurring task shape. One file per template in `~/.genie/templates/`:
+recurring task shape. One file per template in `~/.genie-skill/templates/`:
 
 ```markdown
 ---
@@ -96,8 +96,8 @@ Rules (mirror the memory lifecycle):
   announced with its one-line removal command, never silent. Brakes:
   description ≤300 chars ([[watch-always-loaded-weight]] — it rides
   every host prompt); a published skill with zero uses in 30 days is
-  auto-retired (announced; archived to `~/.genie/retired/`, restorable).
-  That is how genie GENERATES new skills from experience — hermes-grade
+  auto-retired (announced; archived to `~/.genie-skill/retired/`, restorable).
+  That is how genie-skill GENERATES new skills from experience — hermes-grade
   prolific, with receipts and retirement hermes lacks.
 - Templates obey the trust boundary: distilled only from this agent's own
   runs, never from third-party content.
